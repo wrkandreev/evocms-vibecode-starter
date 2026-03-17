@@ -1,0 +1,36 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+core/custom/define.php
+!core/custom/define.php.example
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Runtime cache
+assets/cache/*
+!assets/cache/.gitignore
+core/cache/*
+!core/cache/.gitignore
+
+# Runtime import/export
+assets/export/*
+assets/import/*
