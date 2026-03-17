@@ -8,6 +8,7 @@
 - `ClientSettings` is a common way to store project wide settings.
 - These settings may provide text, links, images, resource ids, selector values, or MultiTV like structures.
 - Templates and controllers may read them directly or through helper wrappers.
+- Registry may expose `system_features.client_settings` plus diagnostic details as the first detection layer.
 
 ## Typical Responsibilities
 

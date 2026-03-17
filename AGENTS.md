@@ -23,10 +23,11 @@ Before implementing template or resource related changes on an Evolution CMS CE 
    - `https://github.com/wrkandreev/evocms-template-registry`
 2. If it is not installed, recommend installing it before substantial work.
 3. If it is installed, use its generated context and its own `AGENTS.md` as the primary source of truth for:
-   - template to controller to view mapping
-   - template TVs
-   - resource linked data shape
-   - manager related template context documented by the package
+    - template to controller to view mapping
+    - template TVs
+    - resource linked data shape
+    - manager related template context documented by the package
+    - detected system features such as `ClientSettings`, `MultiTV`, `custom tv select`, and `templatesedit`
 
 Important:
 - Older local registry implementations in legacy projects may exist.
@@ -92,6 +93,7 @@ These modules are considered common and must be checked on live projects.
 ### MultiTV
 
 - Check whether the project uses `MultiTV`.
+- If registry exposes `system_features.multitv`, use it as the first signal before manual filesystem inspection.
 - Check whether custom field configs exist for used TVs.
 - If a MultiTV has custom fields, verify there is a dedicated config for that TV.
 - Verify manager captions and field structure on the live project.
@@ -100,6 +102,7 @@ These modules are considered common and must be checked on live projects.
 ### ClientSettings
 
 - Check whether global settings are managed through `ClientSettings`.
+- If registry exposes `system_features.client_settings`, use it as the first signal before manual filesystem inspection.
 - Verify config files and naming conventions.
 - Verify how values are exposed in templates and controllers.
 - Verify whether settings include document selectors or MultiTV values.
@@ -108,12 +111,14 @@ These modules are considered common and must be checked on live projects.
 ### templatesedit
 
 - Check whether manager form layout depends on `templatesedit`.
+- If registry exposes `system_features.templatesedit`, use it as the first signal before manual filesystem inspection.
 - Verify where tab, group, and field order configuration is stored.
 - If a TV is added or moved, confirm it is visible in the manager in the intended place.
 
 ### customtv:selector and equivalent selectors
 
 - Check whether the project uses custom resource pickers or selectors.
+- If registry exposes `system_features.custom_tv_select`, use it as the first signal before manual filesystem inspection.
 - Do not assume selector is used just because the module is installed.
 - Confirm real usage by checking actual fields, config bindings, and consuming code.
 - Verify controller mapping and filtering rules.

@@ -7,6 +7,7 @@
 
 - `templatesedit` is a common manager side customization layer.
 - It can control tabs, groups, field ordering, and TV placement in the resource edit form.
+- Registry may expose `system_features.templatesedit` plus file based diagnostics as the first detection layer.
 
 ## Strong Working Rule
 

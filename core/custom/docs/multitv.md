@@ -8,6 +8,7 @@
 - `MultiTV` is a common module in Evo projects.
 - MultiTV data often requires helper side parsing before use in controllers or views.
 - Manager usability depends on field captions and config quality.
+- Registry may expose `system_features.multitv` plus config related diagnostics as the first detection layer.
 
 ## Strong Working Rule
 

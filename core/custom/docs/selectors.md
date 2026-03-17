@@ -8,6 +8,7 @@
 - Evo projects may use custom selectors such as `customtv:selector` to bind resources through manager fields.
 - Selector behavior is usually controlled by PHP classes or controllers with filtering rules.
 - Installed selector module alone does not prove active project usage.
+- Registry may expose `system_features.custom_tv_select` plus details such as selector controller counts as the first detection layer.
 
 ## Important Clarification
 

@@ -29,8 +29,26 @@
 - TVs bound to templates
 - missing or placeholder views
 - project specific template conventions
+- `system_features` for installed module detection
 - the exact TV names that should be matched by local config files when updating MultiTV or related manager side config
 - the template and manager context needed to update deployable `ClientSettings` configs safely
+
+## Registry System Features
+
+- Registry may expose a `system_features` block in API output.
+- This block is useful as the first machine readable signal for installed project modules.
+- Expected feature groups include:
+  - `client_settings.installed`
+  - `multitv.installed`
+  - `custom_tv_select.installed`
+  - `templatesedit.installed`
+- `details` may include helpful diagnostics such as existing config directories, plugin files, or selector controller counts.
+- Preview output may also surface compact feature status lines for quick inspection.
+
+## Working Rule
+
+- If `system_features` is present, use it before falling back to ad hoc filesystem guessing.
+- Treat it as a strong signal, then verify the exact active config and runtime usage on the live project.
 
 ## What Still Needs Live Verification
 

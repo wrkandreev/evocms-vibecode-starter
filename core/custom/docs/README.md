@@ -26,6 +26,7 @@ Important:
 - `core/custom/docs/controllers-views-map.md` - shared controller and helper conventions
 - `core/custom/docs/cache.md` - cache layers and debugging implications
 - `core/custom/docs/ajax.md` - AJAX as a separate subsystem
+- registry `system_features` helps detect installed manager side modules before manual inspection
 
 ## Manager And Field Context
 
