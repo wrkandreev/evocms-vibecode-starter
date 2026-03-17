@@ -7,6 +7,31 @@
 
 - `core/custom/packages/Main/src/Controllers/BaseController.php` is a repeated project pattern.
 - It usually centralizes shared page data and reduces duplication across template controllers.
+- On a fresh project, `BaseController` should be created immediately after package bootstrap and `ControllerNamespace` setup.
+
+## Fresh Install Bootstrap
+
+- package: `Main`
+- controller path: `core/custom/packages/Main/src/Controllers/`
+- namespace in controllers: `EvolutionCMS\Main\Controllers`
+- CMS setting in `core/custom/config/cms/settings.php`: `ControllerNamespace => 'EvolutionCMS\\Main\\Controllers\\'`
+
+Minimal bootstrap version:
+
+```php
+<?php
+
+namespace EvolutionCMS\Main\Controllers;
+
+class BaseController
+{
+    public function __construct()
+    {
+    }
+}
+```
+
+This fallback controller is useful even before the project moves to richer `TemplateController` based implementations.
 
 ## Typical Responsibilities
 

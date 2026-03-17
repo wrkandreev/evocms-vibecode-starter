@@ -20,7 +20,7 @@ Important:
 
 ## Core Evo Context
 
-- `core/custom/docs/fresh-install.md` - fresh Evo 3 bootstrap workflow and package setup
+- `core/custom/docs/fresh-install.md` - fresh Evo 3 bootstrap workflow, `ControllerNamespace`, and base package setup
 - `core/custom/docs/template-context.md` - template, TV, and registry workflow
 - `core/custom/docs/architecture.md` - project structure and active vs legacy paths
 - `core/custom/docs/controllers-views-map.md` - shared controller and helper conventions

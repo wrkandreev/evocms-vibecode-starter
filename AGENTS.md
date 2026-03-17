@@ -55,6 +55,8 @@ When starting work on a project:
 - Use installer CLI mode when available.
 - Prefer a fresh Evolution CMS CE `3.x` version.
 - After install, bootstrap package `Main` under `core/custom/packages/`.
+- Immediately set `ControllerNamespace` in `core/custom/config/cms/settings.php` to the package controller namespace, typically `EvolutionCMS\\Main\\Controllers\\`.
+- Immediately create `core/custom/packages/Main/src/Controllers/BaseController.php` in the same namespace as the fallback shared controller.
 - Then install `evocms-template-registry`.
 - On Timeweb, prefer `composer2` where hosting requires it.
 - For new projects, prefer the new template controller approach based on `TemplateController`, `process()`, and `addViewData()`.
@@ -148,6 +150,7 @@ Typical conventions seen across projects:
 - helpers may wrap DocLister, DLMenu, TV or MTV extraction, caching, and access logic
 - a common package level helper path is `core/custom/packages/Main/src/Helper.php`
 - a common shared controller pattern is `core/custom/packages/Main/src/Controllers/BaseController.php`
+- fresh projects should explicitly configure `ControllerNamespace` so Evo resolves controllers from the intended package
 
 But:
 - exact controller bootstrapping differs by project
