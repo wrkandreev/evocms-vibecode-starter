@@ -13,6 +13,7 @@
 
 - wrappers for `DocLister` and `DLMenu`
 - TV and MultiTV extraction
+- `ClientSettings` value access and parsing
 - gallery helpers
 - document lookup helpers
 - cache aware data access
@@ -50,6 +51,25 @@ class Helper
         return self::convertMTVToArray($raw);
     }
 
+    public static function clientConfig(string $key, $default = '')
+    {
+        $value = evo()->getConfig($key);
+
+        return $value !== null && $value !== '' ? $value : $default;
+    }
+
+    public static function clientMTV(string $key, $display = 'all'): array
+    {
+        $decoded = json_decode((string) evo()->getConfig($key), true);
+        $fieldValue = $decoded['fieldValue'] ?? [];
+
+        if (!is_array($fieldValue)) {
+            return [];
+        }
+
+        return $display === 'all' ? $fieldValue : array_slice($fieldValue, 0, (int) $display);
+    }
+
     public static function convertMTVToArray($value): array
     {
         if (empty($value)) {
@@ -67,6 +87,13 @@ class Helper
 
 - Prefer putting repeated Evo access patterns here instead of duplicating them in every controller.
 - Do not move project specific business rules into `Helper.php` if they belong to one page only.
+
+## Related Examples
+
+- For `ClientSettings` manager config structure, use `core/custom/examples/clientsettings-config.md`.
+- For `MultiTV` manager config structure, use `core/custom/examples/multitv-config.md` and `core/custom/examples/multitv-tv-specific-config.md`.
+- For `templatesedit`, do not invent layout rules in helper code; use `core/custom/examples/templatesedit-config.md`.
+- If the exact TV name, `ClientSettings` key, tab, or config file is unclear, ask instead of guessing.
 
 ## Verify On Live Project
 

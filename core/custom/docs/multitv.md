@@ -14,6 +14,14 @@
 - If a MultiTV has custom fields, verify there is a dedicated config for that TV.
 - Do not rely on a generic default config when the TV has project specific structure.
 - Do not assume sample or fallback configs are the active field definition for a specific TV.
+- If registry or live project context does not clearly show which TV name should receive the config, ask before creating a new file.
+
+## Registry Driven Update Rule
+
+- When registry or verified live project context clearly identifies the TV and config target, update the local deployable config file in the repository.
+- The goal is that the config reaches production by normal `git pull` and becomes visible in manager without manual file copying.
+- Do not create a guessed config file name if the TV binding is still uncertain.
+- If the expected TV entity is missing from registry, report that the agent cannot restore the real database state from current context and ask the user to verify registry or live project state.
 
 ## Why This Matters
 

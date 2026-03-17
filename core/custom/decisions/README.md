@@ -24,3 +24,4 @@ Each ADR should use this structure:
 - `core/custom/decisions/0001-docs-live-in-core-custom.md`
 - `core/custom/decisions/0002-template-registry-is-standard.md`
 - `core/custom/decisions/0003-define-php-for-project-secrets.md`
+- `core/custom/decisions/0004-manager-config-files-must-deploy-via-git.md`

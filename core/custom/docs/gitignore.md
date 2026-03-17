@@ -60,6 +60,8 @@ assets/import/*
 
 - Do not ignore actual project source under `core/custom/`, `views/`, `assets/`, `dashboard/`, `ajax/`, or `cron/` by default.
 - Ignore only generated runtime data and local machine files.
+- Do not ignore deployable manager side config files such as `assets/modules/clientsettings/config/*.php`, `assets/plugins/templatesedit/configs/*.php`, or `assets/tvs/multitv/configs/*.php`.
+- These config files should stay in git so that `git pull` on production delivers manager changes to the right place.
 - Upload directories depend on project policy. Some teams version seed media, others keep all user uploads out of git.
 - If a project already has a server side exclude policy, document it separately and do not silently mirror it into repository ignore rules.
 

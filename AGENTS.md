@@ -95,6 +95,7 @@ These modules are considered common and must be checked on live projects.
 - Check whether custom field configs exist for used TVs.
 - If a MultiTV has custom fields, verify there is a dedicated config for that TV.
 - Verify manager captions and field structure on the live project.
+- If the exact TV name or target config file is not clear from registry or live project context, ask before creating a new config.
 
 ### ClientSettings
 
@@ -102,6 +103,7 @@ These modules are considered common and must be checked on live projects.
 - Verify config files and naming conventions.
 - Verify how values are exposed in templates and controllers.
 - Verify whether settings include document selectors or MultiTV values.
+- If the exact setting key, tab, or config file is not clear from registry or live project context, ask before creating a new config entry.
 
 ### templatesedit
 
@@ -125,6 +127,9 @@ If a task requires new template fields, TVs, selector fields, or manager schema 
 2. If not, ask the project owner to create it in CMS when that is the established workflow.
 3. After creation, verify it through the registry or live project files and configs.
 4. Only then implement dependent code.
+5. If registry clearly shows the target TV or ClientSettings config, update the deployable local config file so it reaches production on `git pull`.
+6. If registry does not make the target name or destination file clear, ask instead of guessing.
+7. If the required entity is missing from registry entirely, tell the user that the agent cannot recover the current database state reliably and that something is wrong with the available context.
 
 Do not silently invent database side fields in code only tasks.
 

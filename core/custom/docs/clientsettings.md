@@ -21,6 +21,13 @@
 - `.sample` and `.example` files near `ClientSettings` configs are reference files, not active settings by default.
 - Active project behavior must be verified against the real config files and the live manager state.
 
+## Registry Driven Update Rule
+
+- When registry or verified live project context clearly identifies the target `ClientSettings` tab or config file, update that local deployable file in the repository.
+- The goal is that the changed config lands on production through normal `git pull` and appears in manager in the right place.
+- If the exact key name, tab, or destination file is still unclear, ask before creating a new config entry.
+- If the expected `ClientSettings` entity is missing from registry, report that the agent cannot restore the real database state from current context and ask the user to verify registry or live project state.
+
 ## What Must Be Verified On A Live Project
 
 - whether `ClientSettings` is installed

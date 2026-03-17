@@ -14,6 +14,7 @@ This document tracks confidence levels for the current knowledge base.
 - `.sample` and `.example` files cannot be treated as active config by default
 - `*_old`, `views_old`, `Main_old`, and backup paths cannot be treated as active source of truth by default
 - `core/custom/define.php.example` is a practical convention for local secret handling
+- deployable manager side config files should stay tracked in git so they reach production on `git pull`
 
 ## Confirmed But Variable
 

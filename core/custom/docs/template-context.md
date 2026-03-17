@@ -16,6 +16,12 @@
 2. If not installed, recommend installing it before substantial template work.
 3. If installed, use its generated artifacts and its own `AGENTS.md` as the primary source of truth.
 
+## Registry Failure Rule
+
+- Registry is expected to reveal the target template and manager side entities needed for safe work.
+- If the required TV, template context, or `ClientSettings` target is missing from registry, do not guess.
+- Tell the user that the agent cannot recover the current database state reliably from the available context and that the live project or registry state must be checked.
+
 ## What Registry Should Clarify
 
 - template to controller mapping
@@ -23,6 +29,8 @@
 - TVs bound to templates
 - missing or placeholder views
 - project specific template conventions
+- the exact TV names that should be matched by local config files when updating MultiTV or related manager side config
+- the template and manager context needed to update deployable `ClientSettings` configs safely
 
 ## What Still Needs Live Verification
 

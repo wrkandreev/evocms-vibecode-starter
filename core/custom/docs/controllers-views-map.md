@@ -34,8 +34,10 @@
 - `core/custom/examples/ajax-handler.md`
 - `core/custom/examples/selector-controller.md`
 - `core/custom/examples/clientsettings-usage.md`
+- `core/custom/examples/clientsettings-config.md`
 - `core/custom/examples/templatesedit-config.md`
 - `core/custom/examples/multitv-config.md`
+- `core/custom/examples/multitv-tv-specific-config.md`
 
 ## Provisional Pattern
 
