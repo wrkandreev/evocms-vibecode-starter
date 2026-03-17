@@ -17,6 +17,13 @@
 - Do not assume sample or fallback configs are the active field definition for a specific TV.
 - If registry or live project context does not clearly show which TV name should receive the config, ask before creating a new file.
 
+## TV Name Rule
+
+- Do not normalize MultiTV TV names automatically.
+- First read the exact TV name from live `evocms-template-registry` output.
+- Read and configure the TV by the key that is actually registered in the project, including dashes.
+- Do not rewrite a real TV name just because underscore or slug style looks more convenient in code.
+
 ## Registry Driven Update Rule
 
 - When registry or verified live project context clearly identifies the TV and config target, update the local deployable config file in the repository.

@@ -27,7 +27,14 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 - If the needed entity is missing from registry entirely, say that current database state cannot be recovered reliably from available context.
 - A TV can exist and still be invisible if `templatesedit` does not expose it.
 - A MultiTV can exist and still be misunderstood if only default config is inspected.
+- Do not normalize MultiTV TV names automatically; use the exact TV key from live registry output, including dashes.
+- `ClientSettings` runtime keys are prefixed with `client_`, so manager field names should not already start with `client_`.
 - When registry or live project context clearly identifies the destination config file, update the deployable local file so production receives it through `git pull`.
+
+## Template Change Rules
+
+- Before changing a template, use live `evocms-template-registry` as the primary source of truth.
+- Verify template alias, controller and view mapping, attached TVs, and `ClientSettings` `setting_name` values separately.
 
 ## Common Module Checks
 

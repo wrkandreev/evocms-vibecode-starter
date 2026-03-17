@@ -37,6 +37,14 @@ class HomeController extends BaseController
 <img src="@config('client_logo')" alt="{{ $titl }}">
 ```
 
+## Naming Rule
+
+- Manager field names should not start with `client_`.
+- `ClientSettings` adds the `client_` prefix at runtime.
+- Example: field `phone` is accessed as `@config('client_phone')`.
+- Example: field `main_examples` is accessed as `evo()->getConfig('client_main_examples')`.
+- Avoid names like `client_phone`, otherwise runtime access becomes `client_client_phone`.
+
 ## Working Rule
 
 - Use `ClientSettings` for project wide data, not page specific business fields.

@@ -50,6 +50,14 @@
 - If `system_features` is present, use it before falling back to ad hoc filesystem guessing.
 - Treat it as a strong signal, then verify the exact active config and runtime usage on the live project.
 
+## Before Changing A Template
+
+- Use live `evocms-template-registry` output as the primary source of truth.
+- Verify the template alias before assuming controller naming.
+- Verify template to controller and template to view mapping separately.
+- Verify the exact list of TVs attached to the template.
+- Verify `ClientSettings` fields together with their real `setting_name` values.
+
 ## What Still Needs Live Verification
 
 - whether registry is fresh

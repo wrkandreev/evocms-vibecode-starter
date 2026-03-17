@@ -22,6 +22,15 @@
 - `.sample` and `.example` files near `ClientSettings` configs are reference files, not active settings by default.
 - Active project behavior must be verified against the real config files and the live manager state.
 
+## Runtime Key Naming Rule
+
+- `ClientSettings` always prefixes runtime keys with `client_`.
+- Runtime key format is `client_` + field name.
+- Example: `phone` becomes `client_phone`.
+- Example: `company_name` becomes `client_company_name`.
+- Do not create field names that already start with `client_`.
+- Otherwise runtime keys become duplicated, for example `client_phone` becomes `client_client_phone`.
+
 ## Registry Driven Update Rule
 
 - When registry or verified live project context clearly identifies the target `ClientSettings` tab or config file, update that local deployable file in the repository.
@@ -34,6 +43,7 @@
 - whether `ClientSettings` is installed
 - where config files are located
 - field naming conventions
+- whether manager field names incorrectly include the `client_` prefix
 - how values are accessed in code and templates
 - whether fields contain plain values, documents, or structured data
 - which config files are real and which are only samples
