@@ -20,6 +20,7 @@
 - a common shared utility entry point is `core/custom/packages/Main/src/Helper.php`
 - a common shared controller entry point is `core/custom/packages/Main/src/Controllers/BaseController.php`
 - views in `views/`
+- frontend assets may live outside `views/`, for example in `html/`, `assets/`, or another project specific directory
 - helper classes wrapping Evo data access and snippets
 
 ## Repeated Project Pattern
@@ -27,6 +28,8 @@
 - `BaseController` often gathers shared view data such as menus, SEO fields, breadcrumbs, current user data, common resource relations, and cache backed lookups.
 - Page specific controllers usually extend that base class and add only template specific data in a dedicated method.
 - `Helper.php` often becomes the main wrapper around Evo APIs and snippet calls such as DocLister, DLMenu, TV access, MultiTV parsing, galleries, and cache friendly data extraction.
+- Active Blade or PHP views often rely on CSS, JS, images, fonts, and partial assets stored outside `views/`.
+- A directory such as `html/` may be the real frontend asset source for the rendered page even when controller and view files live elsewhere.
 
 ## Legacy And Parallel Structures
 
@@ -56,5 +59,7 @@
 - whether the project actually uses a `Main` package name or another package name
 - whether `Helper.php` is a real shared service layer or only a thin utility file
 - whether the project uses Blade, plain PHP templates, or mixed rendering
+- where active views load CSS, JS, images, fonts, partials, or built assets from
+- whether a separate frontend directory such as `html/` is part of the active implementation
 - whether extra app layers exist such as dashboard, AJAX, cron, integrations
 - whether old or backup directories are still referenced anywhere in runtime code

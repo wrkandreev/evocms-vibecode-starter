@@ -71,6 +71,7 @@ assets/import/*
 - In typical Evo projects, `assets/lib/` comes from packages such as `DocLister` and is not the place for project specific edits.
 - Do not pull `assets/lib/` into project git just because it exists on disk.
 - Prefer keeping project owned `DocLister` extension points such as controllers, configs, and custom filters instead of bundled package assets under `assets/lib/`.
+- If active views load CSS, JS, images, fonts, or build output from a separate directory such as `html/` or a custom frontend folder, treat that directory as active project source and keep it in git.
 - Upload directories depend on project policy. Some teams version seed media, others keep all user uploads out of git.
 - If a project already has a server side exclude policy, document it separately and do not silently mirror it into repository ignore rules.
 
@@ -93,6 +94,7 @@ assets/import/*
 
 - which cache directories are actually written at runtime
 - whether a specific project adds custom `DocLister` controllers, configs, or filters that should be versioned
+- whether active views depend on a separate frontend asset directory such as `html/`
 - whether `vendor/` is committed or installed during deploy
 - whether uploads belong in git for that project
 - whether extra secret files exist besides `core/custom/define.php`

@@ -39,6 +39,8 @@ Important:
 
 For Evolution CMS CE, always assume that implementation context may be split across filesystem code, database templates, TVs, ClientSettings, selectors, manager configuration, cache, and extra project layers. Do not conclude project structure from `views/` alone.
 
+Active views often depend on frontend assets stored outside `views/`, for example in `html/`, `assets/`, or another project directory. Before treating a template as fully understood, verify where its CSS, JS, images, fonts, partial assets, or build output actually live.
+
 ## Standard Working Order
 
 When starting work on a project:
@@ -162,6 +164,7 @@ But:
 - some projects use plain custom controllers
 - some projects maintain manual controller or view maps
 - helper responsibilities and exact file names differ by project
+- frontend assets used by active views may live outside `views/`, including separate `html/` style directories
 
 Always verify on the real project.
 

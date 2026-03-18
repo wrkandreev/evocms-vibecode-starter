@@ -17,6 +17,8 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 - `*_old`, `old`, `backup`, `views_old`, and `Main_old` are not active implementation by default.
 - Installed module does not imply active project usage.
 - `selector` installed does not mean selector fields are actually used.
+- Do not treat `views/` as the full template implementation without checking connected frontend asset directories.
+- Active views may depend on CSS, JS, images, fonts, or partial assets stored in `html/`, `assets/`, or another project directory.
 
 ## Field Rules
 
@@ -39,6 +41,7 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 
 - Before changing a template, use live `evocms-template-registry` as the primary source of truth.
 - Verify template alias, controller and view mapping, attached TVs, and `ClientSettings` `setting_name` values separately.
+- Verify where the active view loads its frontend assets from before deciding which files belong to the template implementation.
 
 ## Common Module Checks
 

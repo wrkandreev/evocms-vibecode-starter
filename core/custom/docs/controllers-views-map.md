@@ -10,6 +10,7 @@
 - Shared data preparation is commonly centralized in a base controller or helper layer.
 - A repeated convention is `core/custom/packages/Main/src/Controllers/BaseController.php` plus template specific controllers in the same directory.
 - A repeated convention is a shared helper at `core/custom/packages/Main/src/Helper.php` that wraps DocLister, DLMenu, TV, MultiTV, galleries, and cache aware data access.
+- Views often depend on frontend assets stored outside `views/`.
 
 ## Preferred New Controller Approach
 
@@ -45,12 +46,20 @@
 - views may follow alias based naming such as `views/<alias>.blade.php`
 - some projects keep manual template maps when no registry is installed
 
+## View To Asset Rule
+
+- Do not assume `views/` contains the full active template implementation.
+- Before changing a view, verify where its CSS, JS, images, fonts, partial assets, and build output are stored.
+- Those assets may live in `html/`, `assets/`, or another project specific frontend directory.
+- If an active view depends on such a directory, treat that directory as part of the same implementation unit.
+
 ## What Must Be Verified On A Live Project
 
 - how a template chooses a controller
 - whether controllers extend `TemplateController` or a custom base class
 - how data is passed into views
 - exact path and naming rules for views
+- where related frontend assets are stored and loaded from
 - whether some templates intentionally use fallback or placeholder views
 - whether `BaseController` performs setup in `process()`, constructor, or another bootstrap method
 - whether `Helper.php` is static, instance based, trait based, or split into multiple helper classes
