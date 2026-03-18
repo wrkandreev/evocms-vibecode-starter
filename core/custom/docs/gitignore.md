@@ -65,11 +65,12 @@ assets/import/*
 - If the project uses PageBuilder, treat `assets/plugins/pagebuilder/config/` as deployable project code and keep the whole config directory in git.
 - If the project uses Selector, treat project selector controller/config files under `assets/tvs/selector/lib/` as deployable project code and keep that directory in git.
 - If the project uses `evocms-directory`, treat `core/custom/directory/` as deployable package config and keep that directory in git.
+- If the project adds custom `DocLister` controllers, config files, or DL filters, keep those project additions in git.
 - Do not treat package asset files such as `assets/modules/directory/css/style.css` as project config by default; keep only project owned overrides or published config that actually belongs to the repository workflow.
 - Do not treat `assets/lib/` as required project source by default.
 - In typical Evo projects, `assets/lib/` comes from packages such as `DocLister` and is not the place for project specific edits.
 - Do not pull `assets/lib/` into project git just because it exists on disk.
-- Keep `assets/lib/` only if a specific live project proves that it contains active project owned code rather than bundled package assets.
+- Prefer keeping project owned `DocLister` extension points such as controllers, configs, and custom filters instead of bundled package assets under `assets/lib/`.
 - Upload directories depend on project policy. Some teams version seed media, others keep all user uploads out of git.
 - If a project already has a server side exclude policy, document it separately and do not silently mirror it into repository ignore rules.
 
@@ -80,16 +81,18 @@ assets/import/*
 - MultiTV official repository: `https://github.com/extras-evolution/multiTV`
 - PageBuilder official repository: `https://github.com/evocms-community/pagebuilder/tree/master`
 - Selector official repository: `https://github.com/Pathologic/Selector/tree/master`
+- DocLister official repository: `https://github.com/AgelxNash/DocLister`
 - If local examples are missing and the task touches ClientSettings config, prefer that repository over open internet search.
 - If local examples are missing and the task touches Directory config, prefer that repository over open internet search.
 - If local examples are missing and the task touches MultiTV config, prefer that repository over open internet search.
 - If local examples are missing and the task touches PageBuilder config, prefer that repository over open internet search.
 - If local examples are missing and the task touches Selector config or controller files, prefer that repository over open internet search.
+- If local examples are missing and the task touches `DocLister` controllers, configs, or filters, prefer that repository over open internet search.
 
 ## What Must Be Verified On A Live Project
 
 - which cache directories are actually written at runtime
-- whether a specific project really overrides anything inside `assets/lib/`, despite the default rule that this directory usually comes from packages such as `DocLister`
+- whether a specific project adds custom `DocLister` controllers, configs, or filters that should be versioned
 - whether `vendor/` is committed or installed during deploy
 - whether uploads belong in git for that project
 - whether extra secret files exist besides `core/custom/define.php`

@@ -6,6 +6,7 @@ This document stores official package links that the agent should prefer when lo
 
 - ClientSettings: `https://github.com/evocms-community/clientsettings`
 - Directory: `https://github.com/evocms-community/evocms-directory`
+- DocLister: `https://github.com/AgelxNash/DocLister`
 - DocLister assets lib reference: `https://github.com/AgelxNash/DocLister/tree/master/assets/lib`
 - MultiTV: `https://github.com/extras-evolution/multiTV`
 - PageBuilder: `https://github.com/evocms-community/pagebuilder/tree/master`
