@@ -8,6 +8,7 @@
 - `core/custom/packages/Main/src/Controllers/BaseController.php` is a repeated project pattern.
 - It usually centralizes shared page data and reduces duplication across template controllers.
 - On a fresh project, `BaseController` should be created immediately after package bootstrap and `ControllerNamespace` setup.
+- Live project audit across `xspb.ru`, `infodm.ru`, and `evo.omniagency.ru` shows that a shared data accumulator is still a common controller pattern.
 
 ## Fresh Install Bootstrap
 
@@ -33,6 +34,13 @@ class BaseController
 
 This fallback controller is useful even before the project moves to richer `TemplateController` based implementations.
 
+## Live Pattern Findings
+
+- `xspb.ru` uses `TemplateController`, `process()`, `setCommonData()`, `setPageData()`, and a shared `$data` property passed through `addViewData()`.
+- `evo.omniagency.ru` uses the same overall shape in a simpler form: base document fields and config values are prepared in `process()`, then page specific logic extends it.
+- `infodm.ru` shows the older constructor plus `sendToView()` pattern, which is useful as historical reference but should not be the default for fresh Evo 3 projects.
+- For fresh projects, `TemplateController` plus `process()` is the preferred baseline, even though `$this->data` remains a common implementation detail in real projects.
+
 ## Typical Responsibilities
 
 - detect current document id
@@ -42,24 +50,74 @@ This fallback controller is useful even before the project moves to richer `Temp
 - parse MultiTV values from current document
 - pass prepared data to the view
 
-## Example Shape
+## Recommended Fresh Project Shape
 
 ```php
 <?php
 
 namespace EvolutionCMS\Main\Controllers;
 
-use EvolutionCMS\Main\Helper;
+use EvolutionCMS\TemplateController;
+
+class BaseController extends TemplateController
+{
+    protected int $docid = 0;
+
+    public function process(): void
+    {
+        $this->docid = (int) evo()->documentIdentifier;
+
+        $viewData = array_merge(
+            $this->baseViewData(),
+            $this->pageViewData()
+        );
+
+        $this->addViewData($viewData);
+    }
+
+    protected function baseViewData(): array
+    {
+        return [
+            'pagetitle' => $this->documentField('pagetitle'),
+            'introtext' => $this->documentField('introtext'),
+        ];
+    }
+
+    protected function pageViewData(): array
+    {
+        return [];
+    }
+
+    protected function documentField(string $key): string
+    {
+        $value = evo()->documentObject[$key] ?? '';
+
+        if (is_array($value)) {
+            $value = $value[1] ?? $value[0] ?? '';
+        }
+
+        return trim((string) $value);
+    }
+}
+```
+
+## Common Real Project Shape
+
+```php
+<?php
+
+namespace EvolutionCMS\Main\Controllers;
+
 use EvolutionCMS\TemplateController;
 
 class BaseController extends TemplateController
 {
     protected array $data = [];
-    protected int $docid;
+    protected int $docid = 0;
 
     public function process(): void
     {
-        $this->docid = evo()->documentIdentifier;
+        $this->docid = (int) evo()->documentIdentifier;
 
         $this->setCommonData();
         $this->setPageData();
@@ -69,37 +127,38 @@ class BaseController extends TemplateController
 
     protected function setCommonData(): void
     {
-        $this->data['titl'] = evo_parser(evo()->documentObject['titl'][1] ?? '');
-        $this->data['desc'] = evo_parser(evo()->documentObject['desc'][1] ?? '');
-        $this->data['mainMenu'] = Helper::DLMenu('MainMenu', ['parents' => 0]);
-        $this->data['crumbs'] = evo()->runSnippet('DLCrumbs', ['showCurrent' => 1]);
-
-        $this->processMultiTVs();
+        $this->data['pagetitle'] = $this->documentField('pagetitle');
+        $this->data['introtext'] = $this->documentField('introtext');
     }
 
     protected function setPageData(): void
     {
     }
 
-    protected function processMultiTVs(): void
+    protected function documentField(string $key): string
     {
-        foreach (evo()->documentObject as $key => $value) {
-            if (is_array($value) && (($value[4] ?? null) === 'custom_tv:multitv')) {
-                $this->data[$key] = Helper::convertMTVToArray($value[1] ?? '');
-            }
+        $value = evo()->documentObject[$key] ?? '';
+
+        if (is_array($value)) {
+            $value = $value[1] ?? $value[0] ?? '';
         }
+
+        return trim((string) $value);
     }
 }
 ```
 
 ## Working Rule
 
-- keep shared page setup here
-- keep page specific business logic in child controllers
-- avoid turning `BaseController` into an unstructured dump of unrelated logic
+- Prefer `TemplateController` plus `process()` for fresh projects.
+- A shared `$this->data` property is acceptable because it is common in real projects, but it is not the only valid shape.
+- Keep shared page setup here.
+- Keep page specific business logic in child controllers.
+- Avoid turning `BaseController` into an unstructured dump of unrelated logic.
 
 ## Verify On Live Project
 
 - whether setup runs in `process()`, constructor, or custom bootstrap
 - whether controller extends `TemplateController` or a custom base class
 - whether shared data belongs here or in traits/services
+- whether the project benefits more from array returning methods than from mutating `$this->data`

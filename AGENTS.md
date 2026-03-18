@@ -28,6 +28,7 @@ Before implementing template or resource related changes on an Evolution CMS CE 
     - resource linked data shape
     - manager related template context documented by the package
     - detected system features such as `ClientSettings`, `MultiTV`, `custom tv select`, and `templatesedit`
+4. If registry is installed but the required entity details are missing, stale, or the API/output is unavailable, tell the user to fix registry context first before continuing.
 
 Important:
 - Older local registry implementations in legacy projects may exist.
@@ -96,6 +97,7 @@ These modules are considered common and must be checked on live projects.
 
 - Check whether the project uses `MultiTV`.
 - If registry exposes `system_features.multitv`, use it as the first signal before manual filesystem inspection.
+- For new TVs or MultiTV related manager changes, always verify the exact TV name and binding through live registry first.
 - Check whether custom field configs exist for used TVs.
 - If a MultiTV has custom fields, verify there is a dedicated config for that TV.
 - Verify manager captions and field structure on the live project.
@@ -105,6 +107,7 @@ These modules are considered common and must be checked on live projects.
 
 - Check whether global settings are managed through `ClientSettings`.
 - If registry exposes `system_features.client_settings`, use it as the first signal before manual filesystem inspection.
+- For new `ClientSettings` fields or config changes, always verify live registry field details and `setting_name` values first.
 - Verify config files and naming conventions.
 - Verify how values are exposed in templates and controllers.
 - Verify whether settings include document selectors or MultiTV values.
@@ -137,6 +140,7 @@ If a task requires new template fields, TVs, selector fields, or manager schema 
 5. If registry clearly shows the target TV or ClientSettings config, update the deployable local config file so it reaches production on `git pull`.
 6. If registry does not make the target name or destination file clear, ask instead of guessing.
 7. If the required entity is missing from registry entirely, tell the user that the agent cannot recover the current database state reliably and that something is wrong with the available context.
+8. If registry API/output is unavailable for a task that depends on TVs or `ClientSettings`, tell the user to restore registry access first because otherwise the agent would be working blind.
 
 Do not silently invent database side fields in code only tasks.
 

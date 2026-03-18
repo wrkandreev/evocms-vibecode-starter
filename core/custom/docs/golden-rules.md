@@ -23,12 +23,16 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 - Do not silently invent database side fields in code only tasks.
 - New TVs, selector fields, and similar manager side fields should be created in CMS first when that is the project workflow.
 - After field creation, verify the field through registry or live project configs before writing dependent code.
+- When working with new TVs or manager side entities such as `ClientSettings`, always check live `evocms-template-registry` first.
+- If registry does not contain the required entity details, or its API/output is unavailable, tell the user that the context must be fixed first.
+- Do not proceed with guessed TVs, `ClientSettings` fields, or manager side bindings when registry context is missing, because the agent would be working blind.
 - If the exact TV name or ClientSettings key is still unclear after inspection, ask instead of guessing.
 - If the needed entity is missing from registry entirely, say that current database state cannot be recovered reliably from available context.
 - A TV can exist and still be invisible if `templatesedit` does not expose it.
 - A MultiTV can exist and still be misunderstood if only default config is inspected.
 - Do not normalize MultiTV TV names automatically; use the exact TV key from live registry output, including dashes.
 - `ClientSettings` runtime keys are prefixed with `client_`, so manager field names should not already start with `client_`.
+- If a live project already created `ClientSettings` fields with the `client_` prefix, expect broken runtime keys like `client_client_phone` and treat them as legacy compatibility, not as the target pattern.
 - When registry or live project context clearly identifies the destination config file, update the deployable local file so production receives it through `git pull`.
 
 ## Template Change Rules

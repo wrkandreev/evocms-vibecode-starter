@@ -45,6 +45,13 @@ class HomeController extends BaseController
 - Example: field `main_examples` is accessed as `evo()->getConfig('client_main_examples')`.
 - Avoid names like `client_phone`, otherwise runtime access becomes `client_client_phone`.
 
+## Legacy Compatibility Note
+
+- Some real projects already contain misnamed manager fields like `client_phone`.
+- In those cases runtime access may become `client_client_phone`.
+- Verify the live `setting_name` first through registry or active config files before changing templates or controllers.
+- If the project is already in that state, temporary compatibility code may need to check both `client_client_phone` and `client_phone` during cleanup.
+
 ## Working Rule
 
 - Use `ClientSettings` for project wide data, not page specific business fields.

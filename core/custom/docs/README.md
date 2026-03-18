@@ -55,8 +55,12 @@ Important:
 
 - `core/custom/examples/helper.md`
 - `core/custom/examples/base-controller.md`
+- `core/custom/examples/minimal-template-controller.md`
 - `core/custom/examples/page-controller.md`
 - `core/custom/examples/filtered-list-controller.md`
+- `core/custom/examples/multitv-page-controller.md`
+- `core/custom/examples/selector-fallback-controller.md`
+- `core/custom/examples/search-controller.md`
 - `core/custom/examples/ajax-handler.md`
 - `core/custom/examples/selector-controller.md`
 - `core/custom/examples/clientsettings-usage.md`

@@ -19,7 +19,9 @@
 ## Registry Failure Rule
 
 - Registry is expected to reveal the target template and manager side entities needed for safe work.
+- For tasks that depend on new TVs, `ClientSettings`, selector fields, or manager side bindings, registry must be treated as the primary source of truth.
 - If the required TV, template context, or `ClientSettings` target is missing from registry, do not guess.
+- If registry API/output is unavailable, tell the user to restore it first before continuing.
 - Tell the user that the agent cannot recover the current database state reliably from the available context and that the live project or registry state must be checked.
 
 ## What Registry Should Clarify
@@ -57,6 +59,7 @@
 - Verify template to controller and template to view mapping separately.
 - Verify the exact list of TVs attached to the template.
 - Verify `ClientSettings` fields together with their real `setting_name` values.
+- Do not infer `ClientSettings` runtime keys from captions or guessed field names; confirm whether the live project uses clean keys like `phone` or already broken keys like `client_phone`.
 
 ## What Still Needs Live Verification
 
