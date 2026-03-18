@@ -10,6 +10,11 @@
 - Manager usability depends on field captions and config quality.
 - Registry may expose `system_features.multitv` plus config related diagnostics as the first detection layer.
 
+## Official Package Reference
+
+- MultiTV official repository: `https://github.com/extras-evolution/multiTV`
+- If local examples are missing, prefer that repository over broad internet search.
+
 ## Strong Working Rule
 
 - If a MultiTV has custom fields, verify there is a dedicated config for that TV.

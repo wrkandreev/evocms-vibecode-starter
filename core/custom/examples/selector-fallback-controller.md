@@ -5,7 +5,7 @@
 
 ## Why Keep This Example
 
-- `xspb.ru` uses a useful pattern where a page tries template bound selector TVs first and falls back to `ClientSettings` defaults.
+- A current project pattern uses a useful approach where a page tries template bound selector TVs first and falls back to `ClientSettings` defaults.
 - This helps editors override content per page without losing global defaults.
 
 ## Example Shape

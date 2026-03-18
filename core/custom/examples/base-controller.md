@@ -8,7 +8,7 @@
 - `core/custom/packages/Main/src/Controllers/BaseController.php` is a repeated project pattern.
 - It usually centralizes shared page data and reduces duplication across template controllers.
 - On a fresh project, `BaseController` should be created immediately after package bootstrap and `ControllerNamespace` setup.
-- Live project audit across `xspb.ru`, `infodm.ru`, and `evo.omniagency.ru` shows that a shared data accumulator is still a common controller pattern.
+- Live project audit across several current Evo projects shows that a shared data accumulator is still a common controller pattern.
 
 ## Fresh Install Bootstrap
 
@@ -36,9 +36,9 @@ This fallback controller is useful even before the project moves to richer `Temp
 
 ## Live Pattern Findings
 
-- `xspb.ru` uses `TemplateController`, `process()`, `setCommonData()`, `setPageData()`, and a shared `$data` property passed through `addViewData()`.
-- `evo.omniagency.ru` uses the same overall shape in a simpler form: base document fields and config values are prepared in `process()`, then page specific logic extends it.
-- `infodm.ru` shows the older constructor plus `sendToView()` pattern, which is useful as historical reference but should not be the default for fresh Evo 3 projects.
+- One current project uses `TemplateController`, `process()`, `setCommonData()`, `setPageData()`, and a shared `$data` property passed through `addViewData()`.
+- Another current project uses the same overall shape in a simpler form: base document fields and config values are prepared in `process()`, then page specific logic extends it.
+- A legacy reference project shows the older constructor plus `sendToView()` pattern, which is useful as historical reference but should not be the default for fresh Evo 3 projects.
 - For fresh projects, `TemplateController` plus `process()` is the preferred baseline, even though `$this->data` remains a common implementation detail in real projects.
 
 ## Typical Responsibilities

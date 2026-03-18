@@ -36,6 +36,7 @@ Important:
 - `core/custom/docs/selectors.md` - selector usage checks and verification
 - `core/custom/docs/secrets.md` - project secrets and local config placement
 - `core/custom/docs/gitignore.md` - repository ignore baseline
+- `core/custom/docs/official-links.md` - official package repositories to prefer over internet search
 
 ## Project Layers Beyond Templates
 

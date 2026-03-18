@@ -5,7 +5,7 @@
 
 ## Why Keep This Example
 
-- `evo.omniagency.ru` shows a useful lightweight pattern for fresh projects.
+- A current lightweight project pattern shows a useful minimal shape for fresh projects.
 - It keeps the base controller small and avoids mixing too much business logic into the shared layer.
 
 ## Example Shape

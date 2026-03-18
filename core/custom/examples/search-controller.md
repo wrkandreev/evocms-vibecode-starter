@@ -5,7 +5,7 @@
 
 ## Why Keep This Example
 
-- `xspb.ru` uses a practical search controller that combines request parsing, DocLister filters, and pagination.
+- A current project pattern uses a practical search controller that combines request parsing, DocLister filters, and pagination.
 - Search pages are easy to overcomplicate, so a reference pattern is useful.
 
 ## Example Shape

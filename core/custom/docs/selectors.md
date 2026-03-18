@@ -28,6 +28,16 @@
 - `ClientSettings` or TV configs that reference selector fields
 - frontend or controller code that consumes selected document ids
 
+## Deployable Project Files
+
+- Project specific selector controller/config files commonly live under `assets/tvs/selector/lib/`.
+- Treat that directory as deployable project code and keep it in git when it contains project rules.
+
+## Official Package Reference
+
+- Selector official repository: `https://github.com/Pathologic/Selector/tree/master`
+- If local examples are missing, prefer that repository over broad internet search.
+
 ## What Must Be Verified On A Live Project
 
 - whether selector fields are used at all

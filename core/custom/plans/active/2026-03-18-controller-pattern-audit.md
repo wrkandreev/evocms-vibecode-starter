@@ -39,15 +39,15 @@ Collect a cleaner, current example of how controllers should be structured for f
 ## Decision Log
 
 - 2026-03-18: treat current `BaseController` example as provisional and schedule a live project audit before declaring it the preferred fresh project pattern.
-- 2026-03-18: reviewed live controller patterns in `xspb.ru`, `infodm.ru`, and `evo.omniagency.ru`.
+- 2026-03-18: reviewed live controller patterns in several current and legacy reference projects.
 - 2026-03-18: confirmed that a shared `$data` accumulator is still common in real projects, but should be documented as a common pattern rather than the only valid fresh project shape.
 - 2026-03-18: adopted `TemplateController` plus `process()` as the preferred fresh project baseline and expanded the local examples library with more controller examples.
 
 ## Findings
 
-- `xspb.ru` uses a large `TemplateController` based `BaseController` with `process()`, `setCommonData()`, `setPageData()`, helper methods, traits, and shared `$this->data`.
-- `evo.omniagency.ru` uses a simpler `TemplateController` based `BaseController` that still keeps a shared `$this->data` property but has a much smaller common layer.
-- `infodm.ru` preserves the older constructor plus `sendToView()` pattern, which is useful as legacy reference but not as the default for fresh Evo 3 guidance.
+- One current project uses a large `TemplateController` based `BaseController` with `process()`, `setCommonData()`, `setPageData()`, helper methods, traits, and shared `$this->data`.
+- Another current project uses a simpler `TemplateController` based `BaseController` that still keeps a shared `$this->data` property but has a much smaller common layer.
+- A legacy reference project preserves the older constructor plus `sendToView()` pattern, which is useful as legacy reference but not as the default for fresh Evo 3 guidance.
 - A better repository baseline is to show both the preferred fresh pattern and the common real project pattern, then add focused examples for MultiTV pages, selector fallbacks, and search/list pages.
 
 ## Verification

@@ -5,7 +5,7 @@
 
 ## Why Keep This Example
 
-- `evo.omniagency.ru` uses a clean page controller that reads one MultiTV field and normalizes it for the view.
+- A current project pattern uses a clean page controller that reads one MultiTV field and normalizes it for the view.
 - This is a common pattern for landing pages and portfolio style blocks.
 
 ## Example Shape

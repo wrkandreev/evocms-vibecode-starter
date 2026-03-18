@@ -60,14 +60,36 @@ assets/import/*
 
 - Do not ignore actual project source under `core/custom/`, `views/`, `assets/`, `dashboard/`, `ajax/`, or `cron/` by default.
 - Ignore only generated runtime data and local machine files.
-- Do not ignore deployable manager side config files such as `assets/modules/clientsettings/config/*.php`, `assets/plugins/templatesedit/configs/*.php`, or `assets/tvs/multitv/configs/*.php`.
+- Do not ignore deployable manager side config files such as `assets/modules/clientsettings/config/*.php`, `assets/plugins/templatesedit/configs/*.php`, `assets/tvs/multitv/configs/*.php`, `assets/plugins/pagebuilder/config/*`, selector field controller/config directories such as `assets/tvs/selector/lib/*`, or package config directories such as `core/custom/directory/*`.
 - These config files should stay in git so that `git pull` on production delivers manager changes to the right place.
+- If the project uses PageBuilder, treat `assets/plugins/pagebuilder/config/` as deployable project code and keep the whole config directory in git.
+- If the project uses Selector, treat project selector controller/config files under `assets/tvs/selector/lib/` as deployable project code and keep that directory in git.
+- If the project uses `evocms-directory`, treat `core/custom/directory/` as deployable package config and keep that directory in git.
+- Do not treat package asset files such as `assets/modules/directory/css/style.css` as project config by default; keep only project owned overrides or published config that actually belongs to the repository workflow.
+- Do not treat `assets/lib/` as required project source by default.
+- In typical Evo projects, `assets/lib/` comes from packages such as `DocLister` and is not the place for project specific edits.
+- Do not pull `assets/lib/` into project git just because it exists on disk.
+- Keep `assets/lib/` only if a specific live project proves that it contains active project owned code rather than bundled package assets.
 - Upload directories depend on project policy. Some teams version seed media, others keep all user uploads out of git.
 - If a project already has a server side exclude policy, document it separately and do not silently mirror it into repository ignore rules.
+
+## Official Package Reference
+
+- ClientSettings official repository: `https://github.com/evocms-community/clientsettings`
+- Directory official repository: `https://github.com/evocms-community/evocms-directory`
+- MultiTV official repository: `https://github.com/extras-evolution/multiTV`
+- PageBuilder official repository: `https://github.com/evocms-community/pagebuilder/tree/master`
+- Selector official repository: `https://github.com/Pathologic/Selector/tree/master`
+- If local examples are missing and the task touches ClientSettings config, prefer that repository over open internet search.
+- If local examples are missing and the task touches Directory config, prefer that repository over open internet search.
+- If local examples are missing and the task touches MultiTV config, prefer that repository over open internet search.
+- If local examples are missing and the task touches PageBuilder config, prefer that repository over open internet search.
+- If local examples are missing and the task touches Selector config or controller files, prefer that repository over open internet search.
 
 ## What Must Be Verified On A Live Project
 
 - which cache directories are actually written at runtime
+- whether a specific project really overrides anything inside `assets/lib/`, despite the default rule that this directory usually comes from packages such as `DocLister`
 - whether `vendor/` is committed or installed during deploy
 - whether uploads belong in git for that project
 - whether extra secret files exist besides `core/custom/define.php`

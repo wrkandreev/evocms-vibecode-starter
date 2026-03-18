@@ -20,6 +20,7 @@ Desktop.ini
 !.env.example
 core/custom/define.php
 !core/custom/define.php.example
+core/custom/project-sources.local.md
 
 # Dependency directories
 vendor/
@@ -34,3 +35,12 @@ core/cache/*
 # Runtime import/export
 assets/export/*
 assets/import/*
+
+# Keep deployable manager-side configs in git.
+# Examples:
+# assets/modules/clientsettings/config/
+# assets/plugins/templatesedit/configs/
+# assets/tvs/multitv/configs/
+# assets/plugins/pagebuilder/config/
+# assets/tvs/selector/lib/
+# core/custom/directory/
