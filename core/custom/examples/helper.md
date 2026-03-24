@@ -9,6 +9,12 @@
 - It is often the main shared layer between controllers and low level Evo APIs.
 - Keeping a generic example helps vibe-coding stay consistent across projects.
 
+## Live Pattern Findings
+
+- Raw projects repeatedly use `Helper.php` as the place for `DocLister`, `DLMenu`, `MultiTV`, `ClientSettings`, gallery, URL, and formatting wrappers.
+- `Helper.php` often also normalizes Evo array style document fields and adds cache wrappers around repeated queries.
+- Some helpers contain site specific formatting methods, but the repeated reusable core is data access plus normalization.
+
 ## Typical Responsibilities
 
 - wrappers for `DocLister` and `DLMenu`
@@ -87,6 +93,7 @@ class Helper
 
 - Prefer putting repeated Evo access patterns here instead of duplicating them in every controller.
 - Do not move project specific business rules into `Helper.php` if they belong to one page only.
+- Keep cache wrappers, `DocLister`, `DLMenu`, `MultiTV`, gallery, and formatting helpers here when they are reused across controllers.
 
 ## Related Examples
 

@@ -1,6 +1,6 @@
 # Local Examples And Official Doc Links
 
-- Status: backlog
+- Status: active
 - Date: 2026-03-18
 
 ## Goal
@@ -39,6 +39,8 @@ Reduce hallucinated or internet first implementation guesses by keeping common E
 ## Decision Log
 
 - 2026-03-18: add backlog item to expand local example coverage for common Evo patterns and keep official documentation links for third party tools when local examples are missing.
+- 2026-03-24: raw project snapshots under `~/projects/raw/` confirmed stable custom code locations for `core/custom/packages/Main/src/`, `views/`, linked `html/` frontend directories, `ClientSettings` configs, `MultiTV` configs, and selector controllers.
+- 2026-03-24: local examples were expanded with raw-project-backed examples for `MultiTV`, `ClientSettings`, selectors, frontend asset structure, helper patterns, and traits.
 
 ## Verification
 

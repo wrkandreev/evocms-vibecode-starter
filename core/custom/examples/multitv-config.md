@@ -7,6 +7,7 @@
 
 - A dedicated MultiTV config is often the only reliable description of field shape for a TV.
 - This example helps explain why default config is not enough for project specific TVs.
+- Raw projects confirm that TV specific configs are often small and explicit, for example title plus textarea, image plus thumb, or person card fields.
 
 ## Example Shape
 

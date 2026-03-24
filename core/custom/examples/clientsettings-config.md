@@ -7,6 +7,7 @@
 
 - `ClientSettings` config files define what appears in manager.
 - The file itself is often the deployable source that must be updated locally and delivered to production through `git pull`.
+- Raw projects repeatedly mix plain text fields, `customtv:selector`, and `customtv:multitv` fields inside the same tab config.
 
 ## Example Shape
 
@@ -48,3 +49,4 @@ return [
 - real key naming convention already used on the project
 - whether the field type is plain text, image, selector, or `customtv:multitv`
 - whether the target file is active or only a `.sample`
+- matching selector and `MultiTV` support files for non-text field types

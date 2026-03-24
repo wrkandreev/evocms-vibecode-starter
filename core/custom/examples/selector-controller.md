@@ -7,6 +7,7 @@
 
 - Selector controllers are a repeated pattern in Evo projects that use `customtv:selector`.
 - They encode which resources may be attached to a field in manager.
+- Raw projects repeatedly map selector field names directly to controller files such as `main_examples.controller.class.php`.
 
 ## Typical Responsibilities
 
@@ -19,13 +20,21 @@
 ```php
 <?php
 
-class related_newsController extends \\selectorController
-{
-    public function __construct($modx, $params = [])
-    {
-        parent::__construct($modx, $params);
+namespace Selector;
 
-        $this->addWhereList('c.template in (15) and c.deleted=0');
+include_once(MODX_BASE_PATH . 'assets/tvs/selector/lib/controller.class.php');
+
+class Main_examplesController extends SelectorController
+{
+    public function __construct($modx)
+    {
+        parent::__construct($modx);
+
+        $this->dlParams['idType'] = 'documents';
+        $this->dlParams['ignoreEmpty'] = 1;
+        $this->dlParams['addWhereList'] = 'c.template in (22) and c.deleted=0';
+        $this->dlParams['orderBy'] = 'pagetitle ASC';
+        $this->dlParams['makeUrl'] = 0;
     }
 }
 ```

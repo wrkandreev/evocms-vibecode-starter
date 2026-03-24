@@ -22,8 +22,10 @@ Desktop.ini
 # Editors and IDEs
 .idea/
 .vscode/
+.fleet/
 *.swp
 *.swo
+*.orig
 
 # Logs and temp
 *.log
@@ -36,18 +38,27 @@ Desktop.ini
 !.env.example
 core/custom/define.php
 !core/custom/define.php.example
+core/custom/project-sources.local.md
 
 # Composer and npm local artifacts if present
 vendor/
 node_modules/
+core/composer/cache/
 
 # Evo and project runtime cache
 assets/cache/*
 !assets/cache/.gitignore
 core/cache/*
 !core/cache/.gitignore
+core/storage/cache/*
+core/storage/logs/*
+core/storage/sessions/*
+core/storage/views/*
+core/storage/framework/cache/*
+core/storage/framework/sessions/*
+core/storage/framework/views/*
 
-# Session and generated runtime files
+# Runtime import/export
 assets/export/*
 assets/import/*
 
@@ -60,6 +71,7 @@ assets/import/*
 
 - Do not ignore actual project source under `core/custom/`, `views/`, `assets/`, `dashboard/`, `ajax/`, or `cron/` by default.
 - Ignore only generated runtime data and local machine files.
+- Ignore local-only project source registries such as `core/custom/project-sources.local.md`, but keep an example template in git if needed.
 - Do not ignore deployable manager side config files such as `assets/modules/clientsettings/config/*.php`, `assets/plugins/templatesedit/configs/*.php`, `assets/tvs/multitv/configs/*.php`, `assets/plugins/pagebuilder/config/*`, selector field controller/config directories such as `assets/tvs/selector/lib/*`, or package config directories such as `core/custom/directory/*`.
 - These config files should stay in git so that `git pull` on production delivers manager changes to the right place.
 - If the project uses PageBuilder, treat `assets/plugins/pagebuilder/config/` as deployable project code and keep the whole config directory in git.
@@ -93,6 +105,7 @@ assets/import/*
 ## What Must Be Verified On A Live Project
 
 - which cache directories are actually written at runtime
+- whether `core/storage/` contains only runtime files or also project-owned code in that specific installation
 - whether a specific project adds custom `DocLister` controllers, configs, or filters that should be versioned
 - whether active views depend on a separate frontend asset directory such as `html/`
 - whether `vendor/` is committed or installed during deploy

@@ -37,6 +37,7 @@ Important:
 - `core/custom/docs/secrets.md` - project secrets and local config placement
 - `core/custom/docs/gitignore.md` - repository ignore baseline
 - `core/custom/docs/official-links.md` - official package repositories to prefer over internet search
+- `core/custom/docs/raw-project-custom-code.md` - how to separate project code from core and package noise in raw snapshots
 
 ## Project Layers Beyond Templates
 
@@ -55,17 +56,21 @@ Important:
 ## Examples
 
 - `core/custom/examples/helper.md`
+- `core/custom/examples/common-trait.md`
 - `core/custom/examples/base-controller.md`
 - `core/custom/examples/minimal-template-controller.md`
 - `core/custom/examples/page-controller.md`
 - `core/custom/examples/filtered-list-controller.md`
+- `core/custom/examples/html-frontend-structure.md`
 - `core/custom/examples/multitv-page-controller.md`
+- `core/custom/examples/multitv-listbox-multiple-config.md`
 - `core/custom/examples/selector-fallback-controller.md`
 - `core/custom/examples/search-controller.md`
 - `core/custom/examples/ajax-handler.md`
 - `core/custom/examples/selector-controller.md`
 - `core/custom/examples/clientsettings-usage.md`
 - `core/custom/examples/clientsettings-config.md`
+- `core/custom/examples/clientsettings-selector-config.md`
 - `core/custom/examples/templatesedit-config.md`
 - `core/custom/examples/multitv-config.md`
 - `core/custom/examples/multitv-tv-specific-config.md`

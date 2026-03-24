@@ -6,8 +6,10 @@ Desktop.ini
 # Editors and IDEs
 .idea/
 .vscode/
+.fleet/
 *.swp
 *.swo
+*.orig
 
 # Logs and temp
 *.log
@@ -25,16 +27,29 @@ core/custom/project-sources.local.md
 # Dependency directories
 vendor/
 node_modules/
+core/composer/cache/
 
 # Runtime cache
 assets/cache/*
 !assets/cache/.gitignore
 core/cache/*
 !core/cache/.gitignore
+core/storage/cache/*
+core/storage/logs/*
+core/storage/sessions/*
+core/storage/views/*
+core/storage/framework/cache/*
+core/storage/framework/sessions/*
+core/storage/framework/views/*
 
 # Runtime import/export
 assets/export/*
 assets/import/*
+
+# Optional upload directories.
+# Uncomment only if project policy keeps user uploads outside git.
+# assets/images/uploads/
+# assets/files/uploads/
 
 # Keep deployable manager-side configs in git.
 # Examples:
