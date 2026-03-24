@@ -29,6 +29,7 @@ Reduce hallucinated or internet first implementation guesses by keeping common E
 4. Build a small reference index of official documentation links for third party snippets, plugins, and modules used in typical Evo projects.
 5. Store those links in an easy to scan local document so the agent can prefer them over open ended internet search.
 6. Define a rule: first look for a local example in this repo, and if none exists, use the official GitHub documentation link for that exact tool.
+7. Continue expanding the local example library with more real project examples for helpers, controllers, traits, and manager side configs.
 
 ## Risks
 
@@ -41,6 +42,7 @@ Reduce hallucinated or internet first implementation guesses by keeping common E
 - 2026-03-18: add backlog item to expand local example coverage for common Evo patterns and keep official documentation links for third party tools when local examples are missing.
 - 2026-03-24: raw project snapshots under `~/projects/raw/` confirmed stable custom code locations for `core/custom/packages/Main/src/`, `views/`, linked `html/` frontend directories, `ClientSettings` configs, `MultiTV` configs, and selector controllers.
 - 2026-03-24: local examples were expanded with raw-project-backed examples for `MultiTV`, `ClientSettings`, selectors, frontend asset structure, helper patterns, and traits.
+- 2026-03-24: repository examples intentionally remain on the established `TemplateController` baseline instead of the newer Evo `3.1.30` controller and `DLTemplate` style until more live projects confirm that shift.
 
 ## Verification
 

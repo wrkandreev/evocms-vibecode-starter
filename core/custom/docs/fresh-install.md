@@ -89,6 +89,10 @@ class BaseController
 - For new projects, use the new template controller approach introduced in Evo `3.1.26+`.
 - Reference: `https://community.evocms.ru/blog/docs/perehod-na-novye-kontrollery-shablonov.html`
 - Prefer `process()` and `addViewData()` over older controller patterns such as constructor driven template setup or `sendToView()`.
+- Evo `3.1.30` also introduces a newer template controller and `DLTemplate` view approach: `https://community.evocms.ru/blog/research/novye-vozmozhnosti-kontrollerov-shablona-i-novyj-shablon-view-v-dltemplate.html`
+- This repository does not use that `3.1.30` style as the main example baseline yet.
+- Reason: many real projects still use older `TemplateController` era patterns, and examples should stay useful for those active codebases.
+- Treat the `3.1.30` approach as promising, but not yet the default teaching pattern for this repository.
 - Still ensure `ControllerNamespace` is configured correctly in `core/custom/config/cms/settings.php`.
 - Still bootstrap `BaseController` in `core/custom/packages/Main/src/Controllers/BaseController.php` as part of the base package setup.
 

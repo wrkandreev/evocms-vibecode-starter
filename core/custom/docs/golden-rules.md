@@ -54,6 +54,7 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 
 - A common shared controller path is `core/custom/packages/Main/src/Controllers/BaseController.php`.
 - A common shared helper path is `core/custom/packages/Main/src/Helper.php`.
+- Evo `3.1.30` offers a newer template controller and `DLTemplate` view style, but repository examples intentionally stay on the more widely used pre-`3.1.30` `TemplateController` baseline for now.
 - Verify real package names, bootstrap rules, and responsibilities on the live project.
 
 ## Secrets And Deploy Rules

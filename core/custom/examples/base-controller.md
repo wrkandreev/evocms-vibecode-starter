@@ -41,6 +41,13 @@ This fallback controller is useful even before the project moves to richer `Temp
 - A legacy reference project shows the older constructor plus `sendToView()` pattern, which is useful as historical reference but should not be the default for fresh Evo 3 projects.
 - For fresh projects, `TemplateController` plus `process()` is the preferred baseline, even though `$this->data` remains a common implementation detail in real projects.
 
+## Current Repository Stance
+
+- Evo `3.1.30` has a newer template controller and `DLTemplate` view approach.
+- This repository intentionally does not use that style as the primary example set yet.
+- Reason: local examples should remain directly useful for active projects that still use the established `TemplateController` based pattern.
+- Revisit this stance after more current production style projects adopt the newer approach.
+
 ## Typical Responsibilities
 
 - detect current document id
@@ -152,6 +159,7 @@ class BaseController extends TemplateController
 
 - Prefer `TemplateController` plus `process()` for fresh projects.
 - A shared `$this->data` property is acceptable because it is common in real projects, but it is not the only valid shape.
+- Do not rewrite repository examples to the Evo `3.1.30` controller/view style until live project usage makes it the safer default reference.
 - Keep shared page setup here.
 - Keep page specific business logic in child controllers.
 - Avoid turning `BaseController` into an unstructured dump of unrelated logic.
