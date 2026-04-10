@@ -34,6 +34,7 @@ Important:
 - `core/custom/docs/clientsettings.md` - ClientSettings structure and access patterns
 - `core/custom/docs/templatesedit.md` - manager layout and TV visibility
 - `core/custom/docs/selectors.md` - selector usage checks and verification
+- `core/custom/docs/localization.md` - multilingual patterns with `bLang`, suffixes, and translated manager fields
 - `core/custom/docs/secrets.md` - project secrets and local config placement
 - `core/custom/docs/gitignore.md` - repository ignore baseline
 - `core/custom/docs/official-links.md` - official package repositories to prefer over internet search
@@ -67,6 +68,7 @@ Important:
 - `core/custom/examples/selector-fallback-controller.md`
 - `core/custom/examples/search-controller.md`
 - `core/custom/examples/ajax-handler.md`
+- `core/custom/examples/blang-localization.md`
 - `core/custom/examples/selector-controller.md`
 - `core/custom/examples/clientsettings-usage.md`
 - `core/custom/examples/clientsettings-config.md`

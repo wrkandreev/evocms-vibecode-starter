@@ -49,6 +49,7 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 - Always check `templatesedit`.
 - Always check `MultiTV`.
 - Check `selector` only through evidence of real usage.
+- If the project is multilingual, verify the real localization layer such as `bLang`, active suffix values, and translated manager fields before adding `_en` style keys.
 
 ## Shared Code Pattern Rules
 
