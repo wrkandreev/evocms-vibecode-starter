@@ -28,3 +28,4 @@ Each ADR should use this structure:
 - `core/custom/decisions/0005-main-controller-namespace-and-base-controller-are-required.md`
 - `core/custom/decisions/0006-local-live-examples-are-preferred-over-internet-search.md`
 - `core/custom/decisions/0007-views-and-external-frontend-assets-are-one-implementation-unit.md`
+- `core/custom/decisions/0008-components-should-be-installed-through-project-packages.md`
