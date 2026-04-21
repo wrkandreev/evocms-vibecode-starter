@@ -7,6 +7,12 @@
 
 - A real two-language project shows a stable multilingual pattern built around `bLang`, `$_suffix`, and suffixed field names.
 - This gives the repository a practical baseline for older and current multilingual Evo projects.
+- `evocms-template-registry` can now expose `bLang` metadata, so this pattern can be verified through registry instead of guessed from files alone.
+
+## Registry-First Rule
+
+- If registry is installed, first inspect its `blang` object and related resource context.
+- Use registry data to confirm active languages, suffixes, translated field catalog, and template links before adding `_en` style fields.
 
 ## Helper Pattern
 
@@ -39,6 +45,26 @@ public static function DLMenu($key, $params)
     }
 
     return self::runDlMenuWithCache($key, $params);
+}
+```
+
+Real projects may also read translation strings directly:
+
+```php
+public static function translate($key)
+{
+    $translations = self::getTranslations();
+
+    return $translations[$key] ?? $key;
+}
+
+public static function getTranslations($lang = false)
+{
+    $lang = $lang ?: ($_SESSION['_lang'] ?? 'ru');
+
+    return Cache::rememberForever('Translations_' . $lang, function () use ($lang) {
+        return DB::table('blang')->get()->pluck($lang, 'name')->toArray();
+    });
 }
 ```
 
@@ -116,6 +142,21 @@ return [
 ];
 ```
 
+Real project example of an English-only tab:
+
+```php
+return [
+    'caption' => 'Common (en)',
+    'settings' => [
+        'slogan_en' => ['caption' => 'Logo text', 'type' => 'text'],
+        'work_schedule_en' => ['caption' => 'Work schedule', 'type' => 'text'],
+        'address_en' => ['caption' => 'Address', 'type' => 'text'],
+        'bottom_form_title_en' => ['caption' => 'Bottom form title', 'type' => 'text'],
+        'callback_form_text_en' => ['caption' => 'Callback form text', 'type' => 'text'],
+    ],
+];
+```
+
 `MultiTV` may follow the same rule:
 
 ```php
@@ -137,6 +178,15 @@ $settings['fields'] = [
         'type' => 'textareamini',
     ],
 ];
+```
+
+`templatesedit` may also adjust translated manager fields:
+
+```php
+unset($rules['en']['fields']['managersTitle_en']);
+unset($rules['en']['fields']['departmentsTitle_en']);
+unset($rules['en']['fields']['content_en']);
+unset($rules['en']['fields']['introtext_en']);
 ```
 
 ## Working Rule

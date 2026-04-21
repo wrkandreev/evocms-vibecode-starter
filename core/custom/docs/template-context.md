@@ -32,6 +32,7 @@
 - missing or placeholder views
 - project specific template conventions
 - `system_features` for installed module detection
+- `bLang` support including active languages, suffixes, field catalog, template links, and resource level localized context when the module is installed
 - the exact TV names that should be matched by local config files when updating MultiTV or related manager side config
 - the template and manager context needed to update deployable `ClientSettings` configs safely
 
@@ -44,8 +45,17 @@
   - `multitv.installed`
   - `custom_tv_select.installed`
   - `templatesedit.installed`
+  - `blang.installed`
 - `details` may include helpful diagnostics such as existing config directories, plugin files, or selector controller counts.
 - Preview output may also surface compact feature status lines for quick inspection.
+
+## Registry bLang Support
+
+- `evocms-template-registry` now supports `bLang`.
+- Registry may expose a top level `blang` object even when the module is not installed, with valid empty fallback structure.
+- When `bLang` is installed, registry can expose languages, suffixes, settings, fields catalog, template links, and resource specific localized context.
+- A dedicated endpoint may also expose this data, for example `GET /api/template-registry/blang`.
+- Use this registry context before guessing multilingual field names such as `_en` variants.
 
 ## Working Rule
 

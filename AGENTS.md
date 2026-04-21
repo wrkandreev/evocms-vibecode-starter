@@ -28,6 +28,7 @@ Before implementing template or resource related changes on an Evolution CMS CE 
     - resource linked data shape
     - manager related template context documented by the package
     - detected system features such as `ClientSettings`, `MultiTV`, `custom tv select`, and `templatesedit`
+    - `bLang` support including languages, suffixes, fields catalog, template links, and resource context when available
 4. If registry is installed but the required entity details are missing, stale, or the API/output is unavailable, tell the user to fix registry context first before continuing.
 
 Important:

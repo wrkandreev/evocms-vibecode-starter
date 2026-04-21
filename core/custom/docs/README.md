@@ -27,6 +27,7 @@ Important:
 - `core/custom/docs/cache.md` - cache layers and debugging implications
 - `core/custom/docs/ajax.md` - AJAX as a separate subsystem
 - registry `system_features` helps detect installed manager side modules before manual inspection
+- registry also supports `bLang` metadata and multilingual resource context when the module is installed
 
 ## Manager And Field Context
 

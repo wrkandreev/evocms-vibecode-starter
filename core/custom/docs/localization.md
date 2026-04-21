@@ -15,6 +15,12 @@
 - Resource lists and menus are localized through `DocLister` and `DLMenu` with `blang => 1`.
 - Text fields in `ClientSettings`, TVs, and `MultiTV` often use explicit suffixed keys such as `title_en`, `description_en`, `address_en`.
 
+## Registry Support
+
+- `evocms-template-registry` now supports `bLang`.
+- Registry can expose multilingual context such as languages, suffixes, `bLang` settings, field catalog, template links, and resource-level localized field context.
+- If registry is available, use its `blang` data before inventing translated fields or suffix conventions.
+
 ## Repeated Building Blocks
 
 - `Helper::DocLister()` switches controller to `lang_content` when `blang => 1` is passed.
@@ -23,6 +29,7 @@
 - Views often read text values through `$_suffix`, for example `title . $_suffix`.
 - `ClientSettings` values may be split into `client_address` and `client_address_en`, then selected at runtime with `client_address . $_suffix`.
 - `MultiTV` rows may contain parallel keys such as `title` and `title_en`.
+- Helper methods may also read translation strings from the `blang` table directly for UI text or custom labels.
 
 ## Controller Side Pattern
 
@@ -36,6 +43,26 @@ public function setCommonData()
     $this->data['_suffix'] = evo()->getConfig('_suffix');
     $this->data['langs'] = $this->getLangs();
     $this->data['mainMenu'] = $this->getMainMenu();
+}
+```
+
+Translation helper pattern from a real project:
+
+```php
+public static function translate($key)
+{
+    $translations = self::getTranslations();
+
+    return $translations[$key] ?? $key;
+}
+
+public static function getTranslations($lang = false)
+{
+    $lang = $lang ?: ($_SESSION['_lang'] ?? 'ru');
+
+    return Cache::rememberForever('Translations_' . $lang, function () use ($lang) {
+        return DB::table('blang')->get()->pluck($lang, 'name')->toArray();
+    });
 }
 ```
 
@@ -98,6 +125,7 @@ $langs = evo()->runSnippet('bLang', $params);
 - Example:
   - manager key `address` -> runtime `client_address`
   - manager key `address_en` -> runtime `client_address_en`
+- Real project pattern: one tab may store only translated values such as `slogan_en`, `work_schedule_en`, `address_en`, `bottom_form_title_en`, `callback_form_text_en`.
 
 ## MultiTV Pattern
 
@@ -109,6 +137,15 @@ $langs = evo()->runSnippet('bLang', $params);
 
 - Manager layout may explicitly group translated fields and remove language-specific duplicates from certain tabs.
 - Example: projects may keep `managersTitle` and `managersTitle_en`, then adjust `templatesedit` rules so language tabs do not show the wrong duplicate fields.
+
+Example:
+
+```php
+unset($rules['en']['fields']['managersTitle_en']);
+unset($rules['en']['fields']['departmentsTitle_en']);
+unset($rules['en']['fields']['content_en']);
+unset($rules['en']['fields']['introtext_en']);
+```
 
 ## Working Rule
 
