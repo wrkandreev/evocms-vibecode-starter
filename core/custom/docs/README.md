@@ -36,6 +36,7 @@ Important:
 - `core/custom/docs/templatesedit.md` - manager layout and TV visibility
 - `core/custom/docs/selectors.md` - selector usage checks and verification
 - `core/custom/docs/localization.md` - multilingual patterns with `bLang`, suffixes, and translated manager fields
+- `core/custom/docs/localization.md` also documents how to manage `bLang` through `evocms-template-registry` API
 - `core/custom/docs/secrets.md` - project secrets and local config placement
 - `core/custom/docs/gitignore.md` - repository ignore baseline
 - `core/custom/docs/official-links.md` - official package repositories to prefer over internet search

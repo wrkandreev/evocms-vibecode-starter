@@ -151,6 +151,8 @@ For multilingual projects with `bLang`:
 - Treat `blang_tmplvars` as the source of truth for `bLang` field registration, not raw `site_tmplvars` alone.
 - A manually created pair such as `missionTitle` plus `missionTitle_en` is not automatically a valid `bLang` pair until `bLang` metadata is registered.
 - If registry exposes API support for creating TVs or dictionary entries, prefer that workflow over manual partial setup.
+- Prefer registry `bLang` workflow in this order: inspect `blang` and `resource-context`, then mutate `lexicon`, `fields`, `settings`, and resource localized values through registry API rather than ad hoc DB or manager-only steps.
+- Before writing localized resource values, verify the target localized name is present in `resource-context -> blang -> template_fields` for that exact resource template.
 
 Do not silently invent database side fields in code only tasks.
 

@@ -24,6 +24,60 @@
 - A manually created TV pair such as `missionTitle` plus `missionTitle_en` is not automatically a valid `bLang` pair until it is registered in `bLang` metadata.
 - If registry exposes API support for adding TVs or dictionary entries, use that workflow when available so metadata and real entities stay in sync.
 
+## Registry API Workflow For bLang
+
+When `evocms-template-registry` is installed and write API is enabled, prefer this order:
+
+1. Read current `bLang` state:
+   - `GET /api/template-registry/blang`
+   - `GET /api/template-registry/blang/health`
+2. Read target resource/template context:
+   - `GET /api/template-registry/resource-context?resource_id=...`
+3. Manage dictionary strings through:
+   - `GET/POST/PATCH/DELETE /api/template-registry/blang/lexicon`
+4. Seed default `bLang` params if the project needs the standard localized core fields:
+   - `POST /api/template-registry/blang/default-params`
+5. Create or update real `bLang` fields through metadata, not by manual TV pairs:
+   - `POST/PATCH/DELETE /api/template-registry/blang/fields`
+6. Update manager side language model only through `bLang` settings API:
+   - `PATCH /api/template-registry/blang/settings`
+   - `DELETE /api/template-registry/blang/languages/{language}`
+7. Update actual localized resource values through:
+   - `PATCH /api/template-registry/resources/{resourceId}/blang-fields`
+8. If the project shows drift between `bLang` links and template TV links, repair it through:
+   - `POST /api/template-registry/blang/fix-template-links`
+
+## What Each bLang Endpoint Is For
+
+- `GET /api/template-registry/blang`
+  - current languages, suffixes, settings, field catalog, template links
+- `GET /api/template-registry/blang/health`
+  - drift diagnostics between `blang_tmplvar_templates` and real MODX template TV bindings
+- `GET/POST/PATCH/DELETE /api/template-registry/blang/lexicon`
+  - UI/dictionary strings stored in the `blang` table
+- `POST /api/template-registry/blang/default-params`
+  - manager button analogue that seeds default `blang_tmplvars` and synchronizes generated localized TVs
+- `POST/PATCH/DELETE /api/template-registry/blang/fields`
+  - source of truth for custom localized fields and their template assignments
+- `PATCH /api/template-registry/blang/settings`
+  - languages, suffixes, default language, runtime `bLang` settings
+- `DELETE /api/template-registry/blang/languages/{language}`
+  - explicit language removal from active `bLang` model; does not drop old DB columns automatically
+- `PATCH /api/template-registry/resources/{resourceId}/blang-fields`
+  - actual localized values for one resource, both resource columns and localized TVs when applicable
+- `POST /api/template-registry/blang/fix-template-links`
+  - repair missing `bLang` template links based on current localized TV assignments
+
+## Critical bLang Rules
+
+- Do not create `_en` style TVs manually and assume `bLang` will adopt them.
+- Treat `blang_tmplvars` plus `blang_tmplvar_templates` as the authoritative field model.
+- Use `PATCH /api/template-registry/resources/{resourceId}/blang-fields` for content updates instead of writing random suffixed TVs directly.
+- Before updating localized values, verify the field is present in `resource-context -> blang -> template_fields` for that exact resource template.
+- When changing languages or suffixes, do it through `PATCH /api/template-registry/blang/settings`, not by editing tables ad hoc.
+- If language removal is required, use the explicit delete-language endpoint and pick a replacement default when needed.
+- If `blang/health` reports drift, fix metadata before adding more localized content.
+
 ## Repeated Building Blocks
 
 - `Helper::DocLister()` switches controller to `lang_content` when `blang => 1` is passed.
@@ -157,6 +211,7 @@ unset($rules['en']['fields']['introtext_en']);
 - Always verify whether localized values live in resource fields, TVs, `MultiTV`, `ClientSettings`, or all of them together.
 - Do not invent `_en` fields in code until registry or live project config confirms they exist.
 - Do not treat raw `_en` TV naming as sufficient `bLang` evidence without `blang_tmplvars` registration.
+- For package-driven multilingual work, prefer `evocms-template-registry` write API over direct ad hoc DB edits so `bLang` metadata and generated TVs stay synchronized.
 
 ## Verify On Live Project
 

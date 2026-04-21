@@ -60,6 +60,32 @@
 - A pair of TVs created manually in `site_tmplvars`, such as `missionTitle` and `missionTitle_en`, is not enough by itself to confirm a valid `bLang` field pair.
 - If registry API supports creating TVs or dictionary entries, prefer that API workflow so `bLang` metadata and real TVs stay synchronized.
 
+Practical `bLang` workflow through registry API:
+
+- inspect current model:
+  - `GET /api/template-registry/blang`
+  - `GET /api/template-registry/blang/health`
+- inspect one resource/template context:
+  - `GET /api/template-registry/resource-context?resource_id=...`
+- manage dictionary strings:
+  - `GET/POST/PATCH/DELETE /api/template-registry/blang/lexicon`
+- seed standard localized params:
+  - `POST /api/template-registry/blang/default-params`
+- create or update actual `bLang` field metadata:
+  - `POST/PATCH/DELETE /api/template-registry/blang/fields`
+- change active languages/suffixes/settings:
+  - `PATCH /api/template-registry/blang/settings`
+  - `DELETE /api/template-registry/blang/languages/{language}`
+- write localized content for one resource:
+  - `PATCH /api/template-registry/resources/{resourceId}/blang-fields`
+- repair drift if localized TVs and `bLang` links diverge:
+  - `POST /api/template-registry/blang/fix-template-links`
+
+Do not skip the metadata layer:
+
+- manual `_en` TV pairs alone are not a valid `bLang` field registration
+- `resource-context -> blang -> template_fields` should be treated as the allow-list for resource-level localized writes
+
 ## Working Rule
 
 - If `system_features` is present, use it before falling back to ad hoc filesystem guessing.
