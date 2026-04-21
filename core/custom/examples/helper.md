@@ -14,6 +14,7 @@
 - Raw projects repeatedly use `Helper.php` as the place for `DocLister`, `DLMenu`, `MultiTV`, `ClientSettings`, gallery, URL, and formatting wrappers.
 - `Helper.php` often also normalizes Evo array style document fields and adds cache wrappers around repeated queries.
 - Some helpers contain site specific formatting methods, but the repeated reusable core is data access plus normalization.
+- In Evo CE, `url()` is a wrapper over `makeUrl(int $id)`, not a Laravel style helper for arbitrary string paths.
 
 ## Typical Responsibilities
 
@@ -24,6 +25,13 @@
 - document lookup helpers
 - cache aware data access
 - data normalization before passing into views
+
+## URL Rule
+
+- Do not treat `url()` as a Laravel helper for string asset paths.
+- In Evo CE, `url()` delegates to `makeUrl(int $id)` for document ids.
+- If helper code needs an asset base or frontend path prefix, build it from a string base such as `MODX_SITE_URL`, `base_url`, or a verified project-specific asset root.
+- Do not pass strings like `html/css/style.css` into `url()` or `makeUrl()`.
 
 ## Example Shape
 

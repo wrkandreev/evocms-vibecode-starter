@@ -30,6 +30,7 @@
 - `Helper.php` often becomes the main wrapper around Evo APIs and snippet calls such as DocLister, DLMenu, TV access, MultiTV parsing, galleries, and cache friendly data extraction.
 - Active Blade or PHP views often rely on CSS, JS, images, fonts, and partial assets stored outside `views/`.
 - A directory such as `html/` may be the real frontend asset source for the rendered page even when controller and view files live elsewhere.
+- Evo CE helper conventions are not identical to Laravel helpers; for example `url()` is tied to document url generation through `makeUrl(int $id)`, not arbitrary string asset paths.
 
 ## Legacy And Parallel Structures
 
