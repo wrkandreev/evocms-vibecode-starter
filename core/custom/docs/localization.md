@@ -20,6 +20,9 @@
 - `evocms-template-registry` now supports `bLang`.
 - Registry can expose multilingual context such as languages, suffixes, `bLang` settings, field catalog, template links, and resource-level localized field context.
 - If registry is available, use its `blang` data before inventing translated fields or suffix conventions.
+- `bLang` should be verified through its own metadata tables, especially `blang_tmplvars`, not only through `site_tmplvars` names.
+- A manually created TV pair such as `missionTitle` plus `missionTitle_en` is not automatically a valid `bLang` pair until it is registered in `bLang` metadata.
+- If registry exposes API support for adding TVs or dictionary entries, use that workflow when available so metadata and real entities stay in sync.
 
 ## Repeated Building Blocks
 
@@ -153,6 +156,7 @@ unset($rules['en']['fields']['introtext_en']);
 - Always verify the real `_suffix` values on the live project.
 - Always verify whether localized values live in resource fields, TVs, `MultiTV`, `ClientSettings`, or all of them together.
 - Do not invent `_en` fields in code until registry or live project config confirms they exist.
+- Do not treat raw `_en` TV naming as sufficient `bLang` evidence without `blang_tmplvars` registration.
 
 ## Verify On Live Project
 

@@ -29,6 +29,7 @@ Before implementing template or resource related changes on an Evolution CMS CE 
     - manager related template context documented by the package
     - detected system features such as `ClientSettings`, `MultiTV`, `custom tv select`, and `templatesedit`
     - `bLang` support including languages, suffixes, fields catalog, template links, and resource context when available
+    - API-backed creation/update workflows for TVs and dictionary entries when supported by the registry
 4. If registry is installed but the required entity details are missing, stale, or the API/output is unavailable, tell the user to fix registry context first before continuing.
 
 Important:
@@ -144,6 +145,12 @@ If a task requires new template fields, TVs, selector fields, or manager schema 
 6. If registry does not make the target name or destination file clear, ask instead of guessing.
 7. If the required entity is missing from registry entirely, tell the user that the agent cannot recover the current database state reliably and that something is wrong with the available context.
 8. If registry API/output is unavailable for a task that depends on TVs or `ClientSettings`, tell the user to restore registry access first because otherwise the agent would be working blind.
+
+For multilingual projects with `bLang`:
+
+- Treat `blang_tmplvars` as the source of truth for `bLang` field registration, not raw `site_tmplvars` alone.
+- A manually created pair such as `missionTitle` plus `missionTitle_en` is not automatically a valid `bLang` pair until `bLang` metadata is registered.
+- If registry exposes API support for creating TVs or dictionary entries, prefer that workflow over manual partial setup.
 
 Do not silently invent database side fields in code only tasks.
 

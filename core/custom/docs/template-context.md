@@ -56,6 +56,9 @@
 - When `bLang` is installed, registry can expose languages, suffixes, settings, fields catalog, template links, and resource specific localized context.
 - A dedicated endpoint may also expose this data, for example `GET /api/template-registry/blang`.
 - Use this registry context before guessing multilingual field names such as `_en` variants.
+- For `bLang`, treat registry data derived from `blang_tmplvars` as the authoritative field registration context.
+- A pair of TVs created manually in `site_tmplvars`, such as `missionTitle` and `missionTitle_en`, is not enough by itself to confirm a valid `bLang` field pair.
+- If registry API supports creating TVs or dictionary entries, prefer that API workflow so `bLang` metadata and real TVs stay synchronized.
 
 ## Working Rule
 
