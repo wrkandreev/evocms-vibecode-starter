@@ -41,6 +41,24 @@
 - `core/custom/skills/` - черновые playbook'и для повторяющихся задач
 - `core/custom/decisions/` - короткие ADR с ключевыми решениями
 - `core/custom/plans/` - operational memory для больших задач и исследований
+- `skills/manage-evocms-project/` - готовый устанавливаемый skill для Codex
+
+## Готовый Skill Для Codex
+
+Репозиторий содержит skill `manage-evocms-project`, который объединяет полный рабочий процесс: bootstrap из этого starter, аудит живого Evo-проекта, формирование code-only `.gitignore`, перенос и использование `AGENTS.md`, `docs` и `examples`, безопасную работу с production и Git/webhook deploy.
+
+Установка после клонирования репозитория:
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R skills/manage-evocms-project ~/.codex/skills/
+```
+
+Для обновления замените установленный каталог актуальной версией из репозитория. После установки skill можно вызвать явно:
+
+```text
+Используй $manage-evocms-project и подготовь этот Evolution CMS проект к разработке.
+```
 
 ## Рекомендуемый Порядок Чтения
 

@@ -10,10 +10,18 @@ Important:
 - Before active work on a live Evo project, always verify the real project state.
 
 Read order:
+- `skills/manage-evocms-project/SKILL.md` when this repository is used as an installable Codex skill source
 - `core/custom/docs/fresh-install.md`
 - `core/custom/docs/README.md`
 - `core/custom/docs/golden-rules.md`
 - relevant files in `core/custom/skills/`
+
+## Installable Codex Skill
+
+- `skills/manage-evocms-project/` is the packaged Codex skill for end-to-end Evo project work.
+- Keep it aligned with root `.gitignore`, root `AGENTS.md`, `core/custom/docs/`, and `core/custom/examples/` when those workflows change.
+- Keep reusable cross-project workflow in the skill and verified project-specific facts in each target project's `AGENTS.md`.
+- Validate the packaged skill with the Codex `skill-creator` validator after changes.
 
 ## Mandatory First Check
 

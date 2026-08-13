@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage Evolution CMS Project"
+  short_description: "Bootstrap, audit, and deploy Evo CMS projects"
+  default_prompt: "Use $manage-evocms-project and its Evo vibecode starter workflow to prepare and safely update this project."
