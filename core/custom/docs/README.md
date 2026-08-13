@@ -7,9 +7,6 @@ Important:
 - `skills/manage-evocms-project/` is the installable Codex skill that orchestrates this knowledge base.
 - `core/custom/docs/` is the system of record for reusable project knowledge.
 - `core/custom/examples/` stores reference code patterns.
-- `core/custom/skills/` stores reusable workflow playbooks.
-- `core/custom/decisions/` stores short ADRs.
-- `core/custom/plans/` stores active and completed execution plans.
 
 ## Read First
 
@@ -51,11 +48,9 @@ Important:
 - `core/custom/docs/deploy.md`
 - `core/custom/docs/troubleshooting.md`
 
-## Operational Memory
+## Knowledge Quality
 
 - `core/custom/docs/quality.md` - confidence map for the knowledge base
-- `core/custom/decisions/README.md` - ADR format and index
-- `core/custom/plans/README.md` - execution plan workflow
 
 ## Examples
 
@@ -83,9 +78,8 @@ Important:
 ## Skills
 
 - `skills/manage-evocms-project/SKILL.md` - installable end-to-end Codex workflow
-- `core/custom/skills/evo-project-audit.md`
-- `core/custom/skills/evo-manager-fields-check.md`
-- `core/custom/skills/evo-controller-pattern-review.md`
+
+Draft playbooks, plans, and ADRs for developing the starter itself are kept in the `develop` branch and are intentionally excluded from `main`.
 
 ## Status Labels
 

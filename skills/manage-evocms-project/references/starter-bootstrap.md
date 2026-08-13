@@ -16,7 +16,7 @@ For an existing Evo project, bring in or refresh:
 - `/core/custom/docs/`
 - `/core/custom/examples/`
 
-Optionally bring in `core/custom/skills/`, `decisions/`, and `plans/` when the project will use those workflows. Do not replace project-owned packages, configs, or other active files under `core/custom/`.
+Do not bring development-only `core/custom/skills/`, `decisions/`, or `plans/` from the `develop` branch into target projects. Do not replace project-owned packages, configs, or other active files under `core/custom/`.
 
 Adapt the copied root `AGENTS.md` after inspecting the project. Record only confirmed facts:
 

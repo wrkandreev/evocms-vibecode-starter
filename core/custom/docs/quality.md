@@ -35,7 +35,7 @@ This document tracks confidence levels for the current knowledge base.
 ## Custom Workflow
 
 - browser triggered deploy is a custom vibe-coding workflow, not an Evo standard
-- repository local `skills/` are draft playbooks until runtime skill registry is available
+- `skills/manage-evocms-project/` is the packaged Codex workflow; development-only playbooks stay in the `develop` branch
 
 ## Needs More Live Verification
 

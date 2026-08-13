@@ -14,7 +14,6 @@ Read order:
 - `core/custom/docs/fresh-install.md`
 - `core/custom/docs/README.md`
 - `core/custom/docs/golden-rules.md`
-- relevant files in `core/custom/skills/`
 
 ## Installable Codex Skill
 
@@ -55,7 +54,7 @@ Active views often depend on frontend assets stored outside `views/`, for exampl
 
 When starting work on a project:
 
-1. Inspect project level `AGENTS.md`, `core/custom/docs/README.md`, and relevant files under `core/custom/skills/`.
+1. Inspect project level `AGENTS.md`, `core/custom/docs/README.md`, the relevant subsystem documentation, and matching examples.
 2. Check whether `evocms-template-registry` is installed and generated.
 3. Identify custom package locations, usually under `core/custom/`.
 4. Identify controller and view conventions.
