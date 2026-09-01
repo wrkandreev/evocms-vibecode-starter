@@ -15,6 +15,17 @@
 - helper layer cache
 - Laravel cache wrappers such as `Cache::rememberForever`
 - generated template registry artifacts that are out of date
+- compiled Blade views under the project compiled views path
+- PHP opcache on shared hosting, which can serve stale bytecode after a `git pull`
+
+## Post-Deploy Caches
+
+A successful `git pull` does not guarantee new behavior on shared hosting:
+
+- PHP opcache may keep executing the old bytecode of controllers and views.
+- Compiled Blade views may stay stale until cleared.
+
+Symptom pattern: the repository and the on-disk files are already new, but HTML still contains old markup or old debug markers. Check compiled Blade views and opcache before concluding that the deploy failed.
 
 ## Repeated Project Pattern
 

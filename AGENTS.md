@@ -195,6 +195,8 @@ Always consider:
 - helper layer cache
 - custom `Cache::rememberForever` logic
 - generated registry freshness
+- compiled Blade view cache
+- PHP opcache on shared hosting after a `git pull`
 
 If behavior looks inconsistent, check whether cache invalidation is the real issue.
 

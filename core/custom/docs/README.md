@@ -22,7 +22,8 @@ Important:
 - `core/custom/docs/template-context.md` - template, TV, and registry workflow
 - `core/custom/docs/architecture.md` - project structure and active vs legacy paths
 - `core/custom/docs/controllers-views-map.md` - shared controller and helper conventions
-- `core/custom/docs/cache.md` - cache layers and debugging implications
+- `core/custom/docs/blade-templates.md` - Blade view variable scope and naming hygiene
+- `core/custom/docs/cache.md` - cache layers, post-deploy caches, and debugging implications
 - `core/custom/docs/ajax.md` - AJAX as a separate subsystem
 - registry `system_features` helps detect installed manager side modules before manual inspection
 - registry also supports `bLang` metadata and multilingual resource context when the module is installed

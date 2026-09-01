@@ -35,6 +35,12 @@
 - do not run production SSH commands without explicit user request
 - verify whether deploy is fast forward only or allows merge pulls
 
+## Post-Deploy Cache Behavior
+
+- A deploy endpoint should clear compiled Blade views and attempt opcache invalidation for project PHP and views after a successful pull.
+- On shared hosting `opcache_reset()` from web context may fail; per-file `opcache_invalidate()` is a partial mitigation.
+- Document on the project which caches are cleared automatically and which must be verified manually.
+
 ## What Must Be Verified On A Live Project
 
 - actual deploy script path
@@ -42,3 +48,4 @@
 - SSH key and known hosts requirements
 - whether browser deploy runs under a different user context
 - whether this project uses browser deploy at all or only shell or CI based deploy
+- which post-deploy cache clearing the endpoint performs

@@ -24,6 +24,7 @@ This document tracks confidence levels for the current knowledge base.
 - fresh install command details vary by hosting environment and available PHP binaries
 - AJAX entry points may live in `ajax/`, root scripts, custom routes, or package level handlers
 - selector usage may exist with or without custom controller files depending on project design
+- opcache behavior and compiled view cache locations vary by hosting; on shared hosting, stale bytecode after `git pull` was confirmed and requires post-deploy invalidation
 
 ## Provisional
 
@@ -31,10 +32,12 @@ This document tracks confidence levels for the current knowledge base.
 - exact view naming conventions across all projects
 - standardized route storage for non template endpoints
 - canonical format for project specific integrations docs
+- Blade `@section` shared scope behavior across EVO 3 Blade variants
 
 ## Custom Workflow
 
 - browser triggered deploy is a custom vibe-coding workflow, not an Evo standard
+- signed Gitea push webhook deploy (`POST /deploy` with HMAC signature validation) is the current reference deploy pattern; older browser/token endpoint variants may still exist on earlier projects
 - `skills/manage-evocms-project/` is the packaged Codex workflow; development-only playbooks stay in the `develop` branch
 
 ## Needs More Live Verification

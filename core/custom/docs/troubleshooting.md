@@ -34,6 +34,18 @@
 
 ### Code changed but output did not
 
-- verify cache layers
-- verify generated artifacts are not stale
-- verify production and local environments are aligned
+Check the chain in order and stop at the first stale layer:
+
+1. deployed commit reached `origin/<branch>` and webhook delivery returned success
+2. the file on the production disk contains the change (`grep` for a new marker)
+3. compiled Blade views are regenerated (clear compiled views if needed)
+4. PHP opcache is not serving old bytecode (invalidate per file, or restart PHP where available)
+5. page cache, DocLister or DLMenu cache, and helper layer cache are refreshed
+6. generated registry artifacts are fresh
+7. browser cache is bypassed (hard reload or `curl`)
+
+### Page shows a bare `Error` or a blank 200
+
+- Evo renders a short `Error` output for users without a manager session; a logged-in manager user usually sees the full PHP backtrace.
+- Fastest diagnosis: log into the manager and reload the page.
+- Alternative: temporarily enable `display_errors` at the top of the view, then remove it and restore the file before commit.

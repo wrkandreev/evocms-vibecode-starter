@@ -32,6 +32,16 @@ Keep the webhook secret in ignored production configuration. Never put it in Git
 
 Do not describe this as Gitea Actions unless a real workflow file and runner execute it.
 
+## Post-Deploy Cache Clearing
+
+After a successful `git pull --ff-only`, the endpoint should:
+
+- clear compiled Blade views so templates regenerate on the next request;
+- attempt opcache invalidation for project PHP and view files;
+- keep these steps best-effort: invalidation failure must not fail the deploy response.
+
+If deployed files are new on disk but behavior is old, verify compiled views and opcache before diagnosing the deploy itself.
+
 ## Normal Release
 
 1. Validate code and inspect the diff.
