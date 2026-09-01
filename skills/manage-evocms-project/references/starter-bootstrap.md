@@ -20,6 +20,10 @@ Do not bring development-only `core/custom/skills/`, `decisions/`, or `plans/` f
 
 The starter root `README.md` describes the starter itself and is never copied into target projects. Instead, create a short project README from `templates/project-readme.md` in the starter repository and fill it with confirmed project facts.
 
+Append the Project Notes section from `templates/agents-project-notes.md` to the project `AGENTS.md` and fill it with confirmed facts. Remove subsections that do not apply.
+
+When the project starts recording architecture decisions, copy `templates/adr/` into `core/custom/docs/adr/` and keep the index table updated.
+
 Adapt the copied root `AGENTS.md` after inspecting the project. Record only confirmed facts:
 
 - production and repository locations where appropriate;
@@ -69,6 +73,7 @@ If a component is not covered locally, use the official package links from `core
 ## Refresh Rules
 
 - Compare with upstream before substantial new sessions or when the user asks to enrich/update context.
+- Before comparing, read the `Starter Sync` section of the project README. A missing or stale stamp means the copied docs may be outdated.
+- After refreshing, update the recorded upstream commit and date in the `Starter Sync` section.
 - Merge upstream documentation changes deliberately; preserve project-specific additions.
 - Do not assume copied examples are active code.
-- Record the upstream URL and optionally the fetched commit in project documentation for traceability.

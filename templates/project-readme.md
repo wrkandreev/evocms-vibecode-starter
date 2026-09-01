@@ -46,6 +46,15 @@ Fill every placeholder with confirmed facts only. If a fact is not verified yet,
 
 - <commands run before handoff, for example `php -l` on changed files, `git diff --check`>
 
+## Starter Sync
+
+Record the exact starter state this project was enriched from, and update it on every refresh. Missing or stale stamp means the copied docs may be outdated.
+
+- upstream: https://github.com/wrkandreev/evocms-vibecode-starter
+- branch: `main`
+- fetched commit: `<commit sha>`
+- fetched date: `<YYYY-MM-DD>`
+
 ## Notes
 
 <Confirmed project facts discovered during work. Record only verified facts. Never record tokens, passwords, private keys, or other real secret values here.>

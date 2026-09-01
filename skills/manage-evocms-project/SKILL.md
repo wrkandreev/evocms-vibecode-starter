@@ -41,7 +41,7 @@ Evolution CMS stores templates, TVs, resource structure, and much manager config
 | Task | Approach | Reference |
 |---|---|---|
 | Prepare or clean a repository | audit the live filesystem, derive `.gitignore` from the starter baseline plus a live audit, stage code-only | [references/repository-scope.md](references/repository-scope.md) |
-| Add or refresh agent context | fetch the starter, copy `AGENTS.md` plus `core/custom/docs/` and `core/custom/examples/`, create the project README from `templates/project-readme.md`, never copy the starter root `README.md` | [references/starter-bootstrap.md](references/starter-bootstrap.md) |
+| Add or refresh agent context | fetch the starter, copy `AGENTS.md` plus `core/custom/docs/` and `core/custom/examples/`, append the Project Notes section from `templates/agents-project-notes.md`, create the project README from `templates/project-readme.md`, never copy the starter root `README.md` | [references/starter-bootstrap.md](references/starter-bootstrap.md) |
 | Deploy or production operations | signed Gitea webhook, deploy keys, rollback rules, post-deploy cache clearing | [references/production-deploy.md](references/production-deploy.md) |
 | Template, TV, or resource context | registry first: templates, `resource-context`, `system_features`, bLang metadata | project `AGENTS.md` and `core/custom/docs/template-context.md` |
 
@@ -102,3 +102,5 @@ Observed on live projects. Check these before deep debugging:
 ## Leave Operational Memory
 
 Update the repository's `AGENTS.md` and deployment documentation when discovering stable project-specific facts. Record paths, architecture, validation commands, deploy mechanism, and safety constraints, but never secrets. Keep reusable general guidance in this skill and project-specific facts in the project.
+
+When a decision is expensive to reverse, easy to forget, or likely to be relitigated, start an ADR journal under `core/custom/docs/adr/` using the `templates/adr/` files from the starter repository.
