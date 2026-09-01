@@ -18,6 +18,8 @@ For an existing Evo project, bring in or refresh:
 
 Do not bring development-only `core/custom/skills/`, `decisions/`, or `plans/` from the `develop` branch into target projects. Do not replace project-owned packages, configs, or other active files under `core/custom/`.
 
+The starter root `README.md` describes the starter itself and is never copied into target projects. Instead, create a short project README from `templates/project-readme.md` in the starter repository and fill it with confirmed project facts.
+
 Adapt the copied root `AGENTS.md` after inspecting the project. Record only confirmed facts:
 
 - production and repository locations where appropriate;

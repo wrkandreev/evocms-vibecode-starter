@@ -39,6 +39,9 @@
 - `core/custom/docs/` - system of record для проектных знаний
 - `core/custom/examples/` - эталонные reference-примеры
 - `skills/manage-evocms-project/` - готовый устанавливаемый skill для Codex
+- `templates/` - шаблоны для проектных файлов, например `templates/project-readme.md`
+
+Корневой `README.md` описывает сам starter и в проекты не копируется. Для проекта создаётся короткий README из `templates/project-readme.md` и заполняется подтверждёнными фактами.
 
 Черновые playbook'и, планы и ADR остаются в ветке `develop`; в `main` их нет, чтобы они не копировались в каждый проект.
 
