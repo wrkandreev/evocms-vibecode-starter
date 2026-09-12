@@ -47,7 +47,7 @@
 
 ## Готовый Skill Для Codex
 
-Репозиторий содержит skill `manage-evocms-project`, который объединяет полный рабочий процесс: bootstrap из этого starter, аудит живого Evo-проекта, формирование code-only `.gitignore`, перенос и использование `AGENTS.md`, `docs` и `examples`, безопасную работу с production и Git/webhook deploy.
+Репозиторий содержит skill `manage-evocms-project`, который объединяет полный рабочий процесс: bootstrap из этого starter, аудит живого Evo-проекта, формирование code-only `.gitignore`, перенос и использование `AGENTS.md`, `docs` и `examples`, безопасную работу с production и Git-деплой через подписанный webhook.
 
 Установка после клонирования репозитория:
 
@@ -122,6 +122,6 @@ cp -R skills/manage-evocms-project ~/.codex/skills/
 
 ## Важно
 
-- browser-triggered deploy здесь считается custom workflow, а не стандартом Evo
+- starter содержит примеры Git-деплоя через подписанный webhook; это custom workflow, а не встроенная возможность Evolution CMS CE
 - документация оптимизирована под реальную работу с проектами, а не под абстрактные demo-примеры
 - репозиторий предполагается развивать дальше по мере разбора новых живых проектов
