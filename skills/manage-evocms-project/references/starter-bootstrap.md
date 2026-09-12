@@ -22,6 +22,8 @@ The starter root `README.md` describes the starter itself and is never copied in
 
 Append the Project Notes section from `templates/agents-project-notes.md` to the project `AGENTS.md` and fill it with confirmed facts. Remove subsections that do not apply.
 
+Copy `templates/lessons-learned.md` to `core/custom/docs/lessons-learned.md`. After a verified correction, record reusable failures there so a later session does not repeat the same investigation. Do not record secrets, transient mistakes, or unverified hypotheses.
+
 When the project starts recording architecture decisions, copy `templates/adr/` into `core/custom/docs/adr/` and keep the index table updated.
 
 Adapt the copied root `AGENTS.md` after inspecting the project. Record only confirmed facts:

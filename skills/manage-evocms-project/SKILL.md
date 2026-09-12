@@ -103,4 +103,6 @@ Observed on live projects. Check these before deep debugging:
 
 Update the repository's `AGENTS.md` and deployment documentation when discovering stable project-specific facts. Record paths, architecture, validation commands, deploy mechanism, and safety constraints, but never secrets. Keep reusable general guidance in this skill and project-specific facts in the project.
 
+When a wrong assumption, failed diagnostic path, or implementation mistake produces a reusable lesson, add it to `core/custom/docs/lessons-learned.md` after verifying the cause and resolution. State the symptom, root cause, correction, and prevention rule. Do not document transient mistakes or unverified theories.
+
 When a decision is expensive to reverse, easy to forget, or likely to be relitigated, start an ADR journal under `core/custom/docs/adr/` using the `templates/adr/` files from the starter repository.

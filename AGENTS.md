@@ -217,6 +217,10 @@ These should be documented separately from template context.
 
 Prefer short, practical docs by subsystem.
 
+After correcting a wrong assumption, failed diagnostic path, or implementation mistake, record the lesson in `core/custom/docs/lessons-learned.md` when it can prevent the same investigation in a later session. Record the verified cause, the working resolution, and a concrete prevention rule. Do not turn one-off typos or unverified hypotheses into project documentation.
+
+Use an ADR for a durable architectural decision; use `lessons-learned.md` for an observed failure and its verified remedy.
+
 Mark every cross project rule as one of:
 - confirmed pattern
 - provisional pattern, must be verified on a live project

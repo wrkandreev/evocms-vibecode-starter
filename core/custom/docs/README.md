@@ -52,6 +52,7 @@ Important:
 ## Knowledge Quality
 
 - `core/custom/docs/quality.md` - confidence map for the knowledge base
+- `core/custom/docs/lessons-learned.md` - project-specific, verified failure causes and prevention rules; create it from `templates/lessons-learned.md`
 
 ## Examples
 
