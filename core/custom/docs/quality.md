@@ -36,8 +36,7 @@ This document tracks confidence levels for the current knowledge base.
 
 ## Custom Workflow
 
-- browser triggered deploy is a custom vibe-coding workflow, not an Evo standard
-- signed Gitea push webhook deploy (`POST /deploy` with HMAC signature validation) is the current reference deploy pattern; older browser/token endpoint variants may still exist on earlier projects
+- signed Gitea push webhook deploy (`POST /deploy` with HMAC signature validation) is the current reference custom workflow, not an Evo standard; older browser/token endpoint variants may still exist on earlier projects
 - `skills/manage-evocms-project/` is the packaged Codex workflow; development-only playbooks stay in the `develop` branch
 
 ## Needs More Live Verification

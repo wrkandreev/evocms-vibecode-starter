@@ -1,27 +1,31 @@
-# Deploy
+# Git Deploy Via Signed Gitea Webhook
 
-> Important: deploy workflow is not a standard Evolution CMS CE feature.
-> Browser triggered deploy endpoints are a custom project level pattern used for vibe-coding convenience.
-> Before applying it, verify the real implementation and security model on the live project.
+> Important: this deploy workflow is custom project infrastructure, not a standard Evolution CMS CE feature.
+> Use it only after verifying the live project's repository, branch, deploy path, and security configuration.
 
-## Confirmed Pattern
+## Reference Pattern
 
-- Evo projects may use shell scripts or direct git based deploys.
-- Some projects may additionally use browser triggered deploy endpoints as a custom workflow.
-- Deploy details often depend on server SSH context, keys, known hosts, and tokens.
+```text
+push to production branch
+  -> Gitea POST /deploy
+  -> verify X-Gitea-Event, repository full_name, exact ref, and HMAC of raw body
+  -> acquire a non-blocking lock
+  -> git pull --ff-only origin <branch>
+  -> clear compiled Blade views and attempt opcache invalidation
+```
 
-## Important Clarification
+The webhook secret belongs in ignored production configuration, never in Git, a URL, logs, or a response body. The deploy endpoint should return distinct responses for invalid signatures, ignored events or branches, lock contention, malformed payloads, and pull failures.
 
-- Browser deploy is not an Evo standard.
-- It is a custom workflow pattern introduced to let a project owner or coding agent trigger deploy without opening a manual SSH session for every update.
-- Treat it as project specific infrastructure, not as a built in CMS capability.
+## Legacy Variants
+
+Older projects may use a token-protected browser endpoint, manual `git pull`, or another deploy flow. Treat those as project-specific legacy variants, not as the default. Document and preserve them only after verifying that they are active.
 
 ## Documentation Goals
 
-- describe deploy entry points
-- record required environment variables or constants
-- note branch and remote assumptions
-- document lock files, error codes, and safety rules
+- record the webhook URL, repository full name, production ref, and deploy script path
+- record secret location without recording its value
+- note deploy-key, remote, and known-host assumptions
+- document lock files, response codes, rollback, and cache clearing
 
 ## Recommended Secret Location
 
@@ -33,7 +37,7 @@
 
 - do not expose real tokens or keys in repository docs
 - do not run production SSH commands without explicit user request
-- verify whether deploy is fast forward only or allows merge pulls
+- require `git pull --ff-only`; recover failed deploys by reverting a commit, never by force-pulling or `reset --hard`
 
 ## Post-Deploy Cache Behavior
 
@@ -43,9 +47,8 @@
 
 ## What Must Be Verified On A Live Project
 
-- actual deploy script path
-- secret loading rules
-- SSH key and known hosts requirements
-- whether browser deploy runs under a different user context
-- whether this project uses browser deploy at all or only shell or CI based deploy
-- which post-deploy cache clearing the endpoint performs
+- actual webhook endpoint and deploy script path
+- secret loading and HMAC verification rules
+- deploy-key and known-host requirements for the web-server user
+- expected Gitea event, repository full name, and production ref
+- lock behavior and post-deploy cache clearing

@@ -81,7 +81,7 @@ Important:
 
 - `skills/manage-evocms-project/SKILL.md` - installable end-to-end Codex workflow
 
-Draft playbooks, plans, and ADRs for developing the starter itself are kept in the `develop` branch and are intentionally excluded from `main`.
+`main` contains ADR and lessons-learned templates for project operational memory. Draft playbooks and plans for developing the starter itself are kept in the `develop` branch.
 
 ## Status Labels
 

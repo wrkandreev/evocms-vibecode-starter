@@ -1,6 +1,6 @@
 # ADR Journal
 
-Copy this directory into the project as `core/custom/docs/adr/` when the project starts recording architecture decisions.
+Copy this directory into the project as `core/custom/docs/adr/` during bootstrap. Keep it in the project's main branch so future agent sessions can follow decisions made for the live implementation.
 
 Write an ADR when a decision is expensive to reverse, easy to forget, or likely to be relitigated: choosing a filter mechanism, restructuring a controller, changing data flow between ClientSettings and views, migrating a subsystem, adopting a naming convention.
 

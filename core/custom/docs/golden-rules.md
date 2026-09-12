@@ -65,7 +65,7 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 
 - Store project specific secrets in `core/custom/define.php`.
 - Commit only `core/custom/define.php.example`.
-- Browser deploy is a custom vibe-coding workflow, not an Evolution CMS CE standard.
+- Git deploy through a signed Gitea webhook is the reference custom workflow; it is not an Evolution CMS CE standard.
 
 ## Safety Rules
 
