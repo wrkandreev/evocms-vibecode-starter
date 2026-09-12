@@ -58,7 +58,7 @@
 - Use this registry context before guessing multilingual field names such as `_en` variants.
 - For `bLang`, treat registry data derived from `blang_tmplvars` as the authoritative field registration context.
 - A pair of TVs created manually in `site_tmplvars`, such as `missionTitle` and `missionTitle_en`, is not enough by itself to confirm a valid `bLang` field pair.
-- Creating TVs, including `bLang` TV metadata, through migrations or registry API is not yet a stable workflow. Create them in CMS, then use the registry to verify metadata, template links, and localized field availability before writing dependent code.
+- Creating TVs through migrations is not yet a stable workflow. When registry write API supports the exact TV or `bLang` field, use it so metadata, template links, and real entities stay synchronized. Otherwise create the field through the verified CMS workflow, then use the registry to verify the result before writing dependent code.
 
 ## Working Rule
 

@@ -156,8 +156,8 @@ For multilingual projects with `bLang`:
 
 - Treat `blang_tmplvars` as the source of truth for `bLang` field registration, not raw `site_tmplvars` alone.
 - A manually created pair such as `missionTitle` plus `missionTitle_en` is not automatically a valid `bLang` pair until `bLang` metadata is registered.
-- TV creation through migrations or registry API is not part of the current stable workflow. Create the TV in CMS, verify it in the registry, and only then implement dependent code.
-- For `bLang`, inspect `blang` and `resource-context` before changing localized values. Do not assume a migration or API workflow is available for creating TV metadata.
+- TV creation through migrations is not part of the current stable workflow. When the registry exposes write API support for the exact TV or `bLang` field, prefer that API so real entities and metadata remain synchronized. Otherwise follow the project's CMS workflow, then verify the result in the registry.
+- For `bLang`, inspect `blang` and `resource-context` before changing localized values. Confirm the available registry endpoint and field binding before using its write API.
 - Before writing localized resource values, verify the target localized name is present in `resource-context -> blang -> template_fields` for that exact resource template.
 
 Do not silently invent database side fields in code only tasks.

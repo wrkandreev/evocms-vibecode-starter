@@ -51,7 +51,7 @@ These are short working invariants for vibe-coding on Evolution CMS CE projects.
 - Check `selector` only through evidence of real usage.
 - If the project is multilingual, verify the real localization layer such as `bLang`, active suffix values, and translated manager fields before adding `_en` style keys.
 - For `bLang`, treat `blang_tmplvars` and registry `blang` context as the source of truth, not manually paired `_en` TVs by name alone.
-- TV creation through migrations or registry API is deferred. Until it is stabilized, create TVs in CMS and verify the resulting metadata through the registry.
+- TV creation through migrations is deferred. When registry write API supports the exact TV or `bLang` field, prefer it so metadata and real entities stay synchronized; otherwise create the field through the verified CMS workflow and inspect it through the registry.
 
 ## Shared Code Pattern Rules
 
