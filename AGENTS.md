@@ -36,7 +36,6 @@ Before implementing template or resource related changes on an Evolution CMS CE 
     - manager related template context documented by the package
     - detected system features such as `ClientSettings`, `MultiTV`, `custom tv select`, and `templatesedit`
     - `bLang` support including languages, suffixes, fields catalog, template links, and resource context when available
-    - API-backed creation/update workflows for TVs and dictionary entries when supported by the registry
 4. If registry is installed but the required entity details are missing, stale, or the API/output is unavailable, tell the user to fix registry context first before continuing.
 
 Important:
@@ -157,8 +156,8 @@ For multilingual projects with `bLang`:
 
 - Treat `blang_tmplvars` as the source of truth for `bLang` field registration, not raw `site_tmplvars` alone.
 - A manually created pair such as `missionTitle` plus `missionTitle_en` is not automatically a valid `bLang` pair until `bLang` metadata is registered.
-- If registry exposes API support for creating TVs or dictionary entries, prefer that workflow over manual partial setup.
-- Prefer registry `bLang` workflow in this order: inspect `blang` and `resource-context`, then mutate `lexicon`, `fields`, `settings`, and resource localized values through registry API rather than ad hoc DB or manager-only steps.
+- TV creation through migrations or registry API is not part of the current stable workflow. Create the TV in CMS, verify it in the registry, and only then implement dependent code.
+- For `bLang`, inspect `blang` and `resource-context` before changing localized values. Do not assume a migration or API workflow is available for creating TV metadata.
 - Before writing localized resource values, verify the target localized name is present in `resource-context -> blang -> template_fields` for that exact resource template.
 
 Do not silently invent database side fields in code only tasks.

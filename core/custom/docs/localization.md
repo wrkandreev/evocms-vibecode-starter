@@ -22,7 +22,7 @@
 - If registry is available, use its `blang` data before inventing translated fields or suffix conventions.
 - `bLang` should be verified through its own metadata tables, especially `blang_tmplvars`, not only through `site_tmplvars` names.
 - A manually created TV pair such as `missionTitle` plus `missionTitle_en` is not automatically a valid `bLang` pair until it is registered in `bLang` metadata.
-- If registry exposes API support for adding TVs or dictionary entries, use that workflow when available so metadata and real entities stay in sync.
+- Creating TVs and `bLang` field metadata through migrations or registry API is deferred. Create the TV in CMS, then verify its metadata and template links through the registry.
 
 ## Registry API Workflow For bLang
 
@@ -35,10 +35,8 @@ When `evocms-template-registry` is installed and write API is enabled, prefer th
    - `GET /api/template-registry/resource-context?resource_id=...`
 3. Manage dictionary strings through:
    - `GET/POST/PATCH/DELETE /api/template-registry/blang/lexicon`
-4. Seed default `bLang` params if the project needs the standard localized core fields:
-   - `POST /api/template-registry/blang/default-params`
-5. Create or update real `bLang` fields through metadata, not by manual TV pairs:
-   - `POST/PATCH/DELETE /api/template-registry/blang/fields`
+4. Create standard localized core fields in CMS when the project needs them, then verify them through the registry.
+5. Create or update real `bLang` fields in CMS, then verify the metadata through the registry.
 6. Update manager side language model only through `bLang` settings API:
    - `PATCH /api/template-registry/blang/settings`
    - `DELETE /api/template-registry/blang/languages/{language}`
@@ -55,10 +53,6 @@ When `evocms-template-registry` is installed and write API is enabled, prefer th
   - drift diagnostics between `blang_tmplvar_templates` and real MODX template TV bindings
 - `GET/POST/PATCH/DELETE /api/template-registry/blang/lexicon`
   - UI/dictionary strings stored in the `blang` table
-- `POST /api/template-registry/blang/default-params`
-  - manager button analogue that seeds default `blang_tmplvars` and synchronizes generated localized TVs
-- `POST/PATCH/DELETE /api/template-registry/blang/fields`
-  - source of truth for custom localized fields and their template assignments
 - `PATCH /api/template-registry/blang/settings`
   - languages, suffixes, default language, runtime `bLang` settings
 - `DELETE /api/template-registry/blang/languages/{language}`
